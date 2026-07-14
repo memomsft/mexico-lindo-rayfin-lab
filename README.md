@@ -18,7 +18,7 @@ publicado en Fabric. Temática: cadena ficticia de restaurantes **México Lindo*
 > (anunciados en Microsoft Build, junio 2026). Comandos, límites y comportamiento
 > pueden cambiar antes de la disponibilidad general (GA). Esta guía está validada
 > contra Microsoft Learn (páginas `fabric/apps/*`, actualizadas el 2 de junio de
-> 2026) al 10 de julio de 2026. Antes del evento, vuelve a revisar los enlaces de
+> 2026) al 10 de julio de 2026. Se recomienda revisar los enlaces de
 > la sección [Fuentes oficiales](#-fuentes-oficiales) por si hubo cambios.
 
 ## 📋 Tabla de contenidos
