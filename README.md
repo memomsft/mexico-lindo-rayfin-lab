@@ -1,4 +1,14 @@
-# Laboratorio: Fabric Apps (Rayfin) + GitHub Copilot — "México Lindo"
+<div align="center">
+
+# 🌮 Laboratorio Fabric Apps + GitHub Copilot
+### "México Lindo" — dashboard de ventas construido con lenguaje natural
+
+![Status](https://img.shields.io/badge/status-preview-orange)
+![Duración](https://img.shields.io/badge/duraci%C3%B3n-2h-blue)
+![Idioma](https://img.shields.io/badge/idioma-espa%C3%B1ol-green)
+![Template](https://img.shields.io/badge/plantilla-dataapp-8A2BE2)
+
+</div>
 
 Ejercicio hands-on para construir, con lenguaje natural (GitHub Copilot), una
 aplicación en **Microsoft Fabric Apps** que se conecta a un **modelo semántico**
@@ -9,9 +19,22 @@ publicado en Fabric. Temática: cadena ficticia de restaurantes **México Lindo*
 > pueden cambiar antes de la disponibilidad general (GA). Esta guía está validada
 > contra Microsoft Learn (páginas `fabric/apps/*`, actualizadas el 2 de junio de
 > 2026) al 10 de julio de 2026. Antes del evento, vuelve a revisar los enlaces de
-> la sección [Fuentes oficiales](#fuentes-oficiales) por si hubo cambios.
+> la sección [Fuentes oficiales](#-fuentes-oficiales) por si hubo cambios.
 
-## Objetivo del ejercicio
+## 📋 Tabla de contenidos
+
+- [Objetivo del ejercicio](#-objetivo-del-ejercicio)
+- [Requisitos previos](#-requisitos-previos)
+- [Flujo del ejercicio](#-flujo-del-ejercicio)
+- [Agenda y checkpoints](#-agenda-y-checkpoints-2-horas)
+- [Paso a paso detallado](#-paso-a-paso-detallado)
+- [Solución de problemas comunes](#-solución-de-problemas-comunes)
+- [Fuentes oficiales](#-fuentes-oficiales)
+- [Estructura de este repo](#-estructura-de-este-repo)
+
+---
+
+## 🎯 Objetivo del ejercicio
 
 Que el participante, siguiendo este repo en vivo durante el evento, construya de
 principio a fin:
@@ -30,13 +53,13 @@ lectura sobre el modelo semántico (KPIs, tendencias, ranking de platillos).
 a Fabric. Si más adelante se quiere explorar writeback, es una fase aparte,
 no parte de este ejercicio.
 
-**Duración objetivo del taller práctico: 2 horas.** Ver [Agenda y checkpoints](#agenda-y-checkpoints-2-horas).
+> **⏱ Duración objetivo del taller práctico: 2 horas.** Ver [Agenda y checkpoints](#-agenda-y-checkpoints-2-horas).
 
 ---
 
-## Requisitos previos
+## ✅ Requisitos previos
 
-Ver el detalle completo, verificable, en [`PRERREQUISITOS.md`](./PRERREQUISITOS.md).
+Ver el detalle completo, verificable, en [`docs/PRERREQUISITOS.md`](./docs/PRERREQUISITOS.md).
 Resumen rápido:
 
 - Tenant de Fabric con el workload **Fabric Apps (preview)** habilitado por un
@@ -52,7 +75,8 @@ Resumen rápido:
   (terminal).
 - Licencia de GitHub Copilot activa.
 
-### Regiones válidas para este laboratorio
+<details>
+<summary><strong>🌍 Ver regiones válidas para este laboratorio</strong></summary>
 
 Fabric Apps (preview) **no** está disponible en todas las regiones. Regiones
 verificadas como disponibles (fuente: Microsoft Learn, región availability,
@@ -75,15 +99,21 @@ ejercicio con datos sintéticos; no aplica para arquitecturas productivas de
 clientes reales, donde la región debe decidirse por residencia de datos y
 gobierno, no solo por disponibilidad de la feature.
 
+</details>
+
 ---
 
-## Flujo del ejercicio
+## 🗺️ Flujo del ejercicio
+
+<div align="center">
 
 ![Flujo del laboratorio: CSV sintéticos → Lakehouse en Fabric → Modelo semántico → Fabric App (Data App) → App desplegada](./assets/flujo-ejercicio.svg)
 
+</div>
+
 ---
 
-## Agenda y checkpoints (2 horas)
+## 🕐 Agenda y checkpoints (2 horas)
 
 | Bloque | Tiempo | Qué se valida al cerrar el bloque |
 |---|---|---|
@@ -96,17 +126,17 @@ gobierno, no solo por disponibilidad de la feature.
 | 7. Ajustes de estilo/branding vía Copilot | 1:45–1:55 | Marca "México Lindo" aplicada de forma consistente |
 | 8. Despliegue (`npx rayfin up`) y validación en el portal | 1:55–2:00 | App visible y funcional dentro del portal de Fabric |
 
-Si algún participante se atrasa, los bloques 1–4 (dataset → modelo semántico) se
-pueden dar **pre-armados** solo para ese caso puntual, empezando desde el
-bloque 5. Esta es una decisión de facilitación, no técnica.
+> Si algún participante se atrasa, los bloques 1–4 (dataset → modelo semántico) se
+> pueden dar **pre-armados** solo para ese caso puntual, empezando desde el
+> bloque 5. Esta es una decisión de facilitación, no técnica.
 
 ---
 
-## Paso a paso detallado
+## 📖 Paso a paso detallado
 
 ### Bloque 1 — Verificación de prerrequisitos (0:00–0:15)
 
-Sigue el checklist de [`PRERREQUISITOS.md`](./PRERREQUISITOS.md) punto por
+Sigue el checklist de [`docs/PRERREQUISITOS.md`](./docs/PRERREQUISITOS.md) punto por
 punto. No continúes al bloque 2 si algo falla aquí — son los puntos que más
 tiempo hacen perder en vivo.
 
@@ -279,7 +309,10 @@ consistente):
 
 ---
 
-## Solución de problemas comunes
+## 🐛 Solución de problemas comunes
+
+<details open>
+<summary><strong>Ver tabla de troubleshooting</strong></summary>
 
 | Síntoma | Causa probable | Acción |
 |---|---|---|
@@ -296,30 +329,35 @@ consistente):
 > no de la documentación oficial — repórtalas si las ves, pueden cambiar
 > antes de GA.
 
+</details>
+
 ---
 
-## Fuentes oficiales
+## 📚 Fuentes oficiales
 
 Toda la parte técnica específica de Rayfin/Fabric Apps en esta guía está
 validada contra estas páginas de Microsoft Learn (revisadas el 10 de julio de
 2026; recordar que la feature está en preview y puede cambiar):
 
-- Overview: https://learn.microsoft.com/en-us/fabric/apps/overview
-- Crear tu primera app: https://learn.microsoft.com/en-us/fabric/apps/create-app
-- Plantilla Data App (modelo semántico): https://learn.microsoft.com/en-us/fabric/apps/data-apps-template
-- Estructura del proyecto: https://learn.microsoft.com/en-us/fabric/apps/project-structure
-- Disponibilidad por región: https://learn.microsoft.com/en-us/fabric/admin/region-availability
+| Página | Enlace |
+|---|---|
+| Overview | https://learn.microsoft.com/en-us/fabric/apps/overview |
+| Crear tu primera app | https://learn.microsoft.com/en-us/fabric/apps/create-app |
+| Plantilla Data App (modelo semántico) | https://learn.microsoft.com/en-us/fabric/apps/data-apps-template |
+| Estructura del proyecto | https://learn.microsoft.com/en-us/fabric/apps/project-structure |
+| Disponibilidad por región | https://learn.microsoft.com/en-us/fabric/admin/region-availability |
 
 ---
 
-## Estructura de este repo
+## 📁 Estructura de este repo
 
 ```
 mexico-lindo-rayfin-lab/
-├── README.md                  ← esta guía (para el participante)
-├── PRERREQUISITOS.md          ← checklist verificable, para el repo y para enviar por correo
+├── README.md                   ← esta guía (para el participante)
+├── docs/
+│   ├── PRERREQUISITOS.md       ← checklist verificable, para el repo y para enviar por correo
 ├── assets/
-│   └── flujo-ejercicio.svg    ← diagrama del flujo, referenciado en el README
+│   └── flujo-ejercicio.svg     ← diagrama del flujo, referenciado en el README
 └── data/
     ├── categorias.csv
     ├── sucursales.csv
