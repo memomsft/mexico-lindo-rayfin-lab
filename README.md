@@ -233,17 +233,9 @@ contra la UI real de Fabric.
 
 ### Bloque 6 — Prompt a Copilot para conectar el modelo semántico (1:20–1:45)
 
-1. Confirma que ya hiciste el **login de Fabric/Entra dentro de la app
-   local** — abre en el navegador la URL que te mostró tu propia terminal al
-   correr `npm run dev` (no asumas un puerto fijo; Vite puede levantar en
-   5173, 5174, u otro si el anterior está ocupado) y verifica que ahí te pidió
-   iniciar sesión con tu cuenta de Microsoft/Entra, no con GitHub.
-2. Abre VS Code en la carpeta del proyecto y abre el panel de **GitHub
-   Copilot Chat** (o ejecuta `copilot` en una terminal). Si vienes de la ruta
-   alterna del Bloque 5 y ese hilo ya tuvo errores o rodeos, **abre un hilo
-   nuevo** en vez de seguir en el mismo — evita que el agente arrastre un
-   plan equivocado de un intento previo.
-3. Usa el prompt siguiente. Sigue el patrón recomendado por Microsoft
+1. Abre VS Code en la carpeta del proyecto y abre el panel de **GitHub
+   Copilot Chat** (o ejecuta `copilot` en una terminal para usar Copilot CLI).
+2. Usa el prompt siguiente. Sigue el patrón recomendado por Microsoft
    Learn: **una sola instrucción que combina el link del modelo con lo que
    quieres construir**:
 
@@ -256,9 +248,9 @@ contra la UI real de Fabric.
    Sustituye `<link-del-modelo>` por el link completo que copiaste en el
    Bloque 4 (incluyendo el `?experience=fabric-developer` al final).
 
-4. Copilot generará la conexión al modelo (maneja la autenticación por ti,
+3. Copilot generará la conexión al modelo (maneja la autenticación por ti,
    según la documentación oficial) y los componentes visuales.
-5. Pide **un solo ajuste pequeño** para mostrar que se puede iterar, por
+4. Pide **un solo ajuste pequeño** para mostrar que se puede iterar, por
    ejemplo:
 
    > Agrega un filtro (slicer) por sucursal que afecte a todos los visuales.
