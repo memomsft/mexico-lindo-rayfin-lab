@@ -236,29 +236,32 @@ contra la UI real de Fabric.
 
 1. Abre VS Code en la carpeta del proyecto y abre el panel de **GitHub
    Copilot Chat** (o ejecuta `copilot` en una terminal para usar Copilot CLI).
-2. Usa el prompt siguiente. Sigue el patrón recomendado por Microsoft
-   Learn: **una sola instrucción que combina el link del modelo con lo que
-   quieres construir**:
+2. Usa el prompt de abajo. Sigue el patrón recomendado por Microsoft Learn:
+   **una sola instrucción que combina el link del modelo con lo que quieres
+   construir**.
 
-   ```text
-   Usa mi modelo semántico de ventas en <link-del-modelo> para generar un
-   dashboard de ventas de México Lindo con: una tarjeta KPI de ventas
-   totales, una gráfica de barras de ventas por sucursal, una gráfica de
-   línea de ventas por mes, y una tabla con el detalle de platillos más
-   vendidos (nombre, categoría, cantidad vendida, monto total).
-   ```
+**📋 PROMPT — cópialo tal cual en Copilot:**
 
-   Sustituye `<link-del-modelo>` por el link completo que copiaste en el
-   Bloque 4 (incluyendo el `?experience=fabric-developer` al final).
+```text
+Usa mi modelo semántico de ventas en <link-del-modelo> para generar un
+dashboard de ventas de México Lindo con: una tarjeta KPI de ventas
+totales, una gráfica de barras de ventas por sucursal, una gráfica de
+línea de ventas por mes, y una tabla con el detalle de platillos más
+vendidos (nombre, categoría, cantidad vendida, monto total).
+```
+
+Sustituye `<link-del-modelo>` por el link completo que copiaste en el
+Bloque 4 (incluyendo el `?experience=fabric-developer` al final).
 
 3. Copilot generará la conexión al modelo (maneja la autenticación por ti,
    según la documentación oficial) y los componentes visuales.
-4. Pide **un solo ajuste pequeño** para mostrar que se puede iterar, por
-   ejemplo:
+4. Pide **un solo ajuste pequeño** para mostrar que se puede iterar:
 
-   ```text
-   Agrega un filtro (slicer) por sucursal que afecte a todos los visuales.
-   ```
+**📋 PROMPT — cópialo tal cual en Copilot:**
+
+```text
+Agrega un filtro (slicer) por sucursal que afecte a todos los visuales.
+```
 
 > ⚠️ **Limitación conocida (documentada por Microsoft):** una Fabric App
 > conectada a un modelo semántico no se puede abrir en su propia ventana de
@@ -271,6 +274,8 @@ contra la UI real de Fabric.
 Pide a Copilot ajustes de estilo en una sola instrucción (el template centraliza
 el estilo en un archivo, así que un solo prompt actualiza toda la app de forma
 consistente):
+
+**📋 PROMPT — cópialo tal cual en Copilot:**
 
 ```text
 Aplica un estilo de marca "México Lindo": paleta de verde, blanco y rojo,
