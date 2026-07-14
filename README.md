@@ -318,7 +318,6 @@ validada contra estas páginas de Microsoft Learn (revisadas el 10 de julio de
 mexico-lindo-rayfin-lab/
 ├── README.md                  ← esta guía (para el participante)
 ├── PRERREQUISITOS.md          ← checklist verificable, para el repo y para enviar por correo
-├── NOTAS-FACILITADOR.md       ← guion de la demo de 30 min (uso interno, no para el participante)
 ├── assets/
 │   └── flujo-ejercicio.svg    ← diagrama del flujo, referenciado en el README
 └── data/
