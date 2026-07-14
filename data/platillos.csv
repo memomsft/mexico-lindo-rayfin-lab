@@ -1,0 +1,19 @@
+id_platillo,nombre_platillo,id_categoria,precio,costo,nivel_picante,disponible
+101,Guacamole Tradicional,1,95,32,2,TRUE
+102,Queso Fundido,1,110,40,1,TRUE
+103,Sopes de Chorizo,5,85,28,2,TRUE
+104,Tacos al Pastor (orden),2,140,45,2,TRUE
+105,Enchiladas Verdes,2,150,50,3,TRUE
+106,Mole Poblano,2,190,70,2,TRUE
+107,Cochinita Pibil,2,175,60,1,TRUE
+108,Chiles en Nogada,2,210,85,1,FALSE
+109,Pozole Rojo,2,160,55,3,TRUE
+110,Quesadillas de Flor de Calabaza,5,90,30,0,TRUE
+111,Flan Napolitano,3,75,20,0,TRUE
+112,Churros con Cajeta,3,80,22,0,TRUE
+113,Pastel de Tres Leches,3,85,25,0,TRUE
+114,Agua de Horchata,4,45,10,0,TRUE
+115,Michelada,4,95,20,0,TRUE
+116,Margarita Clásica,4,130,35,0,TRUE
+117,Café de Olla,4,50,12,0,TRUE
+118,Refresco,4,40,8,0,TRUE
