@@ -126,9 +126,10 @@ gobierno, no solo por disponibilidad de la feature.
 | 7. Ajustes de estilo/branding vía Copilot | 1:45–1:55 | Marca "México Lindo" aplicada de forma consistente |
 | 8. Despliegue (`npx rayfin up`) y validación en el portal | 1:55–2:00 | App visible y funcional dentro del portal de Fabric |
 
-> Si algún participante se atrasa, los bloques 1–4 (dataset → modelo semántico) se
-> pueden dar **pre-armados** solo para ese caso puntual, empezando desde el
-> bloque 5. Esta es una decisión de facilitación, no técnica.
+> 📌 **Nota de facilitación:** si algún participante se atrasa, los bloques
+> 1–4 (dataset → modelo semántico) se pueden dar **pre-armados** solo para
+> ese caso puntual, empezando desde el bloque 5. Esta es una decisión de
+> facilitación, no técnica.
 
 ---
 
@@ -154,9 +155,9 @@ tiempo hacen perder en vivo.
 4. Verifica en el **SQL Analytics Endpoint** del Lakehouse que las 4 tablas
    existen y tienen filas (`SELECT COUNT(*) FROM ventas` debe regresar ~10,000).
 
-> Esta parte usa capacidades estándar de Fabric (Lakehouse, Load to Tables),
-> no específicas de Rayfin — conocimiento general de la plataforma, no
-> requiere validación adicional contra Rayfin.
+> ℹ️ **Nota de validación:** esta parte usa capacidades estándar de Fabric
+> (Lakehouse, Load to Tables), no específicas de Rayfin — conocimiento
+> general de la plataforma, no requiere validación adicional contra Rayfin.
 
 ### Bloque 3 — Crear el modelo semántico (0:35–0:55)
 
@@ -223,7 +224,7 @@ contra la UI real de Fabric.
    deploy to complete before starting the frontend", espera a que termine
    antes de correr `npm run dev`.
 
-> **Ruta alterna — agente de código:** el mismo panel tiene un botón
+> 🔀 **Ruta alterna — agente de código:** el mismo panel tiene un botón
 > **"Copy prompt"** ("Using an AI coding agent? Skip the steps below") que
 > entrega un prompt equivalente a los pasos 1–4 de arriba, pensado para un
 > agente con permiso de ejecutar comandos de terminal (ej. Copilot en modo
@@ -239,11 +240,13 @@ contra la UI real de Fabric.
    Learn: **una sola instrucción que combina el link del modelo con lo que
    quieres construir**:
 
-   > Usa mi modelo semántico de ventas en `<link-del-modelo>` para generar un
-   > dashboard de ventas de México Lindo con: una tarjeta KPI de ventas
-   > totales, una gráfica de barras de ventas por sucursal, una gráfica de
-   > línea de ventas por mes, y una tabla con el detalle de platillos más
-   > vendidos (nombre, categoría, cantidad vendida, monto total).
+   ```text
+   Usa mi modelo semántico de ventas en <link-del-modelo> para generar un
+   dashboard de ventas de México Lindo con: una tarjeta KPI de ventas
+   totales, una gráfica de barras de ventas por sucursal, una gráfica de
+   línea de ventas por mes, y una tabla con el detalle de platillos más
+   vendidos (nombre, categoría, cantidad vendida, monto total).
+   ```
 
    Sustituye `<link-del-modelo>` por el link completo que copiaste en el
    Bloque 4 (incluyendo el `?experience=fabric-developer` al final).
@@ -253,9 +256,11 @@ contra la UI real de Fabric.
 4. Pide **un solo ajuste pequeño** para mostrar que se puede iterar, por
    ejemplo:
 
-   > Agrega un filtro (slicer) por sucursal que afecte a todos los visuales.
+   ```text
+   Agrega un filtro (slicer) por sucursal que afecte a todos los visuales.
+   ```
 
-> **Limitación conocida (documentada por Microsoft):** una Fabric App
+> ⚠️ **Limitación conocida (documentada por Microsoft):** una Fabric App
 > conectada a un modelo semántico no se puede abrir en su propia ventana de
 > navegador fuera del portal de Fabric — el botón "Open" falla en las
 > consultas visuales. Valida el resultado **dentro** del portal de Fabric,
@@ -267,8 +272,10 @@ Pide a Copilot ajustes de estilo en una sola instrucción (el template centraliz
 el estilo en un archivo, así que un solo prompt actualiza toda la app de forma
 consistente):
 
-> Aplica un estilo de marca "México Lindo": paleta de verde, blanco y rojo,
-> tipografía moderna sans-serif, esquinas redondeadas en las tarjetas.
+```text
+Aplica un estilo de marca "México Lindo": paleta de verde, blanco y rojo,
+tipografía moderna sans-serif, esquinas redondeadas en las tarjetas.
+```
 
 ### Bloque 8 — Despliegue y validación (1:55–2:00)
 
@@ -294,10 +301,9 @@ consistente):
 5. Abre el ítem **App** en el **portal de Fabric** (no en `localhost`) y
    valida que el dashboard carga datos reales del modelo semántico.
 
-> Si le pediste a Copilot que hiciera el deploy por ti (ruta del agente,
-> Bloque 5), puedes simplemente decirle "despliega la app" en el mismo hilo
-> y él corre `npx rayfin up` — pero confirma que sea en la terminal/carpeta
-> correcta del proyecto.
+> 🔀 **Si usaste la ruta del agente (Bloque 5):** puedes simplemente decirle
+> a Copilot "despliega la app" en el mismo hilo y él corre `npx rayfin up`
+> — pero confirma que sea en la terminal/carpeta correcta del proyecto.
 
 ---
 
@@ -316,10 +322,10 @@ consistente):
 | `npx rayfin up` falla con error de sesión | Sesión de Rayfin CLI expirada | `npx rayfin login` y reintentar |
 | Aparece texto literal como `\uFE0F` junto a un ícono en vez del ícono/emoji | Copilot generó un emoji decorativo (ej. 🍽️) y el componente no renderiza bien el carácter de variación Unicode que lo acompaña | Pide a Copilot: "Quita el emoji decorativo de [componente] y usa un ícono SVG simple en su lugar, o quítalo por completo" |
 
-> Las dos filas de auth (tokens de otro tenant / Bad Request) vienen de
-> fricciones reales observadas durante la preparación de este laboratorio,
-> no de la documentación oficial — repórtalas si las ves, pueden cambiar
-> antes de GA.
+> ℹ️ **Nota de procedencia:** las dos filas de auth (tokens de otro tenant /
+> Bad Request) vienen de fricciones reales observadas durante la
+> preparación de este laboratorio, no de la documentación oficial —
+> repórtalas si las ves, pueden cambiar antes de GA.
 
 </details>
 
