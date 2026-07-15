@@ -40,6 +40,7 @@ participante sin depender del facilitador.
       (Alternativa: CLI `copilot` instalado, para quienes prefieran terminal
       en vez de VS Code).
 - [ ] Terminal con acceso a internet saliente (npm, GitHub).
+- [ ] **Azure CLI** instalado en la terminal - `winget install --exact --id Microsoft.AzureCLI`
 - [ ] Git instalado, y el repo de este ejercicio clonado localmente.
 
 ## 5. Verificación rápida (el día antes del evento)
