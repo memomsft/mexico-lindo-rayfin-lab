@@ -263,6 +263,7 @@ Bloque 4
 ```text
 Agrega un filtro (slicer) por sucursal que afecte a todos los visuales.
 ```
+Una vez termine Github Copilot de ejecutar los cambios, vuelve a subir los cambios con `npx rayfin up`y procede a validar desde Fabric.
 
 > ⚠️ **Limitación conocida (documentada por Microsoft):** una Fabric App
 > conectada a un modelo semántico no se puede abrir en su propia ventana de
@@ -282,6 +283,8 @@ consistente):
 Aplica un estilo de marca "México Lindo": paleta de verde, blanco y rojo,
 tipografía moderna sans-serif, esquinas redondeadas en las tarjetas.
 ```
+
+Vuelve nuevamente a subir los cambios con `npx rayfin up`y procede a validar desde Fabric.
 
 ### Bloque 8 — Despliegue y validación (1:55–2:00)
 
