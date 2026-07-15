@@ -243,11 +243,9 @@ contra la UI real de Fabric.
 **📋 PROMPT — cópialo tal cual en Copilot:**
 
 ```text
-Conectate a mi Workspace de Fabric <nombre-del-workspace> y usa mi modelo semántico <nombre-del-modelo semantico> para generar un
-dashboard de ventas de México Lindo con: una tarjeta KPI de ventas
-totales, una gráfica de barras de ventas por sucursal, una gráfica de
-línea de ventas por mes, y una tabla con el detalle de platillos más
-vendidos (nombre, categoría, cantidad vendida, monto total).
+Conectate a mi Workspace de Fabric <nombre-del-workspace> y usa mi modelo semántico <nombre-del-modelo semantico>para generar un dashboard
+de ventas de México Lindo con: una tarjeta KPI de ventastotales, una gráfica de barras de ventas por sucursal, una gráfica de
+línea de ventas por mes, y una tabla con el detalle de platillos másvendidos (nombre, categoría, cantidad vendida, monto total).
 ```
 
 Sustituye `<nombre-del-modelo semantico>` por el nombre del modelo que copiaste en el
