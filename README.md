@@ -286,11 +286,12 @@ tipografía moderna sans-serif, esquinas redondeadas en las tarjetas.
 
 Vuelve nuevamente a subir los cambios con `npx rayfin up`y procede a validar desde Fabric.
 
-### Bloque 8 — Despliegue y validación (1:55–2:00)
+### Bloque 8 — Entendiendo los comandos de despliegue y validación (1:55–2:00)
 
-**Antes de esto, entiende la diferencia entre los dos comandos:**
+Estos comandos con importantes porque permiten iterar el desarrollo local y los cambios que se publican en Fabric.
+
 - `npm run dev` (Bloque 5) solo levanta una **vista previa local**, en tu
-  propia máquina — nadie más la puede ver, ni siquiera dentro de Fabric.
+  propia máquina — nadie más la puede ver, ni siquiera dentro de Fabric (no soportado aun para el template DataApp)
   Sirve únicamente para que tú y Copilot iteren rápido mientras desarrollan.
 - `npx rayfin up` es el que **publica la app de verdad** dentro de tu
   workspace de Fabric — solo hasta que corres esto, el ítem **App** en el
@@ -328,7 +329,7 @@ Vuelve nuevamente a subir los cambios con `npx rayfin up`y procede a validar des
 | "Bad Request" al iniciar sesión en la app local | El puerto real de `npm run dev` no coincide con `allowedRedirectUris` en `rayfin/rayfin.yml` (Vite pudo levantar en un puerto distinto a 5173 si estaba ocupado) | Revisa `rayfin/rayfin.yml` → `services.auth.allowedRedirectUris` y confirma que incluya la URL/puerto real que muestra tu terminal |
 | El botón "Open" de la app falla al cargar visuales | Limitación conocida y documentada (preview) para apps conectadas a modelos semánticos | Validar dentro del portal de Fabric, no en ventana aparte |
 | `npx rayfin up` falla con error de sesión | Sesión de Rayfin CLI expirada | `npx rayfin login` y reintentar |
-| Aparece texto literal como `\uFE0F` junto a un ícono en vez del ícono/emoji | Copilot generó un emoji decorativo (ej. 🍽️) y el componente no renderiza bien el carácter de variación Unicode que lo acompaña | Pide a Copilot: "Quita el emoji decorativo de [componente] y usa un ícono SVG simple en su lugar, o quítalo por completo" |
+
 
 > ℹ️ **Nota de procedencia:** las dos filas de auth (tokens de otro tenant /
 > Bad Request) vienen de fricciones reales observadas durante la
