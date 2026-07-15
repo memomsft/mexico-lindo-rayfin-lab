@@ -35,7 +35,7 @@ participante sin depender del facilitador.
 
 ## 4. Entorno local de cada participante
 
-- [ ] **Node.js** (LTS) y **npm** instalados.
+- [ ] **Node.js** (LTS) y **npm** instalados via archivo ejecutable (descarga desde https://nodejs.org/en/download) o por terminal `winget install OpenJS.NodeJS.LTS`
 - [ ] **VS Code** instalado, con la extensión de **GitHub Copilot**.
       (Alternativa: CLI `copilot` instalado, para quienes prefieran terminal
       en vez de VS Code).
