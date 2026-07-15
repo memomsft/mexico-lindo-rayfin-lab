@@ -186,16 +186,10 @@ tiempo hacen perder en vivo.
    ```
 6. Guarda y publica el modelo.
 
-### Bloque 4 — Obtener el share link del modelo (0:55–1:05)
+### Bloque 4 — Obtener el nombre del modelo (0:55–1:05)
 
 1. Abre el modelo semántico publicado en el **Power BI Service**.
-2. Copia el link de la barra de navegación — debe tener el formato:
-   ```
-   https://app.powerbi.com/groups/<workspace-id>/modeling/<model-id>/modelView?experience=fabric-developer
-   ```
-   (el parámetro `?experience=fabric-developer` al final es normal, déjalo tal
-   cual viene).
-3. Guarda este link completo, lo vas a pegar en el prompt a Copilot en el
+2. Copia el nombre del modelo semantico lo vas a pegar en el prompt a Copilot en el
    Bloque 6.
 
 ### Bloque 5 — Scaffold del Fabric App con la plantilla `dataapp` (1:05–1:20)
@@ -211,7 +205,7 @@ contra la UI real de Fabric.
    un comando **ya armado con el nombre real de tu workspace** — cópialo
    directo de ahí (botón de copiar al lado del comando) en vez de escribirlo
    a mano, para no arriesgar con typos. Lo vamos a necesitar en los siguientes pasos
-4. Abre una ventana de terminal (recomendado VS Code) y haz sign in en tu tenant/subscripcion de Entra ID (mismo tenant donde esta tu Fabric) mediante el comando `az login` de Azure CLI.
+4. Abre una ventana de terminal (recomendado VS Code) y haz **sign in** en tu tenant/subscripcion de Entra ID (mismo tenant donde esta tu Fabric) mediante el comando `az login` de Azure CLI.
    Si no tienes Azure CLI en la terminal puedes instalarlo ahi mismo desde la terminal con `winget install --exact --id Microsoft.AzureCLI`
 5. Selecciona y confirma tu subscripcion desde la terminal y ahora procede a pegar el comando que te genero el artefacto de Fabric App, seria algo parecido al siguiente comando:
    
@@ -226,8 +220,7 @@ contra la UI real de Fabric.
    cd app-mexicolindo
    npm run dev
    ```
-`npm run dev` te deberia proveer un URL para una vista previa de la aplicacion pero actualmente los template **"DataApp"** no se pueden visualizar desde fuera de Fabric por lo que no sera posible
-ver esta vista previa (obtendras un mensaje de 'Can't open this app outside Fabric). 
+`npm run dev` te deberia proveer un URL para una vista previa de la aplicacion (servidor dev) pero actualmente los template **"DataApp"** no se pueden visualizar desde fuera de Fabric por lo que no sera posible ver esta vista previa (obtendras un mensaje de 'Can't open this app outside Fabric). Para salir del scope de este comando puedes usar Crtl + C en la misma terminal.
 
 
 > 🔀 **Ruta Alterna/Opcional — agente de código:** el mismo panel del App en Fabric tiene un botón
@@ -250,20 +243,22 @@ ver esta vista previa (obtendras un mensaje de 'Can't open this app outside Fabr
 **📋 PROMPT — cópialo tal cual en Copilot:**
 
 ```text
-Conectate a Fabric con mi usuario <tu-usuario-fabric> y usa mi modelo semántico de ventas en <link-del-modelo semantico> para generar un
+Conectate a mi Workspace de Fabric <nombre-del-workspace> y usa mi modelo semántico <nombre-del-modelo semantico> para generar un
 dashboard de ventas de México Lindo con: una tarjeta KPI de ventas
 totales, una gráfica de barras de ventas por sucursal, una gráfica de
 línea de ventas por mes, y una tabla con el detalle de platillos más
 vendidos (nombre, categoría, cantidad vendida, monto total).
 ```
 
-Sustituye `<link-del-modelo>` por el link completo que copiaste en el
-Bloque 4 (incluyendo el `?experience=fabric-developer` al final).
+Sustituye `<nombre-del-modelo semantico>` por el nombre del modelo que copiaste en el
+Bloque 4
 
-3. Copilot te va pedir autenticar para validar tu acceso con Github y a los recursos, luego generará la conexión al modelo (maneja la autenticación por ti,
+3. Copilot te va pedir autenticar para validar tu acceso con Github, luego generará la conexión al modelo (maneja la autenticación por ti,
    según la documentación oficial) y los componentes visuales.
-4. Dejalo terminar y aprueba las solicitudes que te haga para poder ejecutar los cambios en el app. Copilot va iterar y reintentar cuando no pueda avanzar con algun paso.
-5. Pidele **un solo ajuste pequeño** para mostrar que se puede iterar:
+4. Dejalo terminar, revisa los pasos que ejecuta y aprueba (allow) las solicitudes que te haga para poder realizar cambios en el app. Copilot va construir un plan de ejecucion para completar los todos los pasos, esto puede tomar unos minutos.
+5. Una vez completo es hora de revisar lo que construimos con Github Copilot, para ello primero subamos los cambios a Fabric con `npm rayfin up` (este comando es el que sube los cambios de local a Fabric)
+6. Abre nuevamente Fabric y desde la venta del App refresca el navegador, veras el app que genero Copilot, desde aca podemos ir de nuevo a VS Code e iterar el desarrollo pidiendole cambios.
+7. Pidele **un solo ajuste pequeño** para mostrar que se puede iterar:
 
 **📋 PROMPT — cópialo tal cual en Copilot:**
 
