@@ -254,7 +254,7 @@ Bloque 4
 3. Copilot te va pedir autenticar para validar tu acceso con Github, luego generará la conexión al modelo (maneja la autenticación por ti,
    según la documentación oficial) y los componentes visuales.
 4. Dejalo terminar, revisa los pasos que ejecuta y aprueba (allow) las solicitudes que te haga para poder realizar cambios en el app. Copilot va construir un plan de ejecucion para completar los todos los pasos, esto puede tomar unos minutos.
-5. Una vez completo es hora de revisar lo que construimos con Github Copilot, para ello primero subamos los cambios a Fabric. Desde la terminal en el folder del proyecto ejecuta `npx rayfin up` (este comando publica los cambios del app local en Fabric)
+5. Una vez completo es hora de revisar lo que construimos con Github Copilot, para ello primero subamos los cambios a Fabric. Desde la terminal en el folder del proyecto ejecuta `npx rayfin up` (este comando publica los cambios del app local en Fabric) y espera a que termine.
 6. Abre nuevamente Fabric y desde la venta del App refresca el navegador, veras el app que genero Copilot, desde aca podemos validar los cambios e ir de nuevo a VS Code e iterar el desarrollo pidiendole modificaciones o ajustes.
 7. Prueba ahora y pidele **un solo ajuste pequeño** para mostrar que se puede iterar:
 
