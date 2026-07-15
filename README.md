@@ -204,10 +204,10 @@ Esta parte sí es específica de Rayfin — validada contra Microsoft Learn
 (`fabric/apps/create-app`, `fabric/apps/data-apps-template`) y confirmada
 contra la UI real de Fabric.
 
-1. En el workspace, **New item → App**.
+1. En el workspace, **New item → App**. Nómbralo `app-mexicolindo`.
 2. En la pantalla **"Pick a template to get started"**, elige la tarjeta
    **"Data App"** (no "Blank App" ni "To-Do App").
-3. Nómbralo `app-mexicolindo`. Fabric abre el panel **"Getting Started"** con
+3. Deja que termine de desplegar el recurso.Fabric abre el panel **"Getting Started"** con
    un comando **ya armado con el nombre real de tu workspace** — cópialo
    directo de ahí (botón de copiar al lado del comando) en vez de escribirlo
    a mano, para no arriesgar un typo en el nombre del workspace:
