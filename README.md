@@ -255,8 +255,8 @@ Bloque 4
    según la documentación oficial) y los componentes visuales.
 4. Dejalo terminar, revisa los pasos que ejecuta y aprueba (allow) las solicitudes que te haga para poder realizar cambios en el app. Copilot va construir un plan de ejecucion para completar los todos los pasos, esto puede tomar unos minutos.
 5. Una vez completo es hora de revisar lo que construimos con Github Copilot, para ello primero subamos los cambios a Fabric con `npm rayfin up` (este comando es el que sube los cambios de local a Fabric)
-6. Abre nuevamente Fabric y desde la venta del App refresca el navegador, veras el app que genero Copilot, desde aca podemos ir de nuevo a VS Code e iterar el desarrollo pidiendole cambios.
-7. Pidele **un solo ajuste pequeño** para mostrar que se puede iterar:
+6. Abre nuevamente Fabric y desde la venta del App refresca el navegador, veras el app que genero Copilot, desde aca podemos validar los cambios e ir de nuevo a VS Code e iterar el desarrollo pidiendole modificaciones o ajustes.
+7. Prueba ahora y pidele **un solo ajuste pequeño** para mostrar que se puede iterar:
 
 **📋 PROMPT — cópialo tal cual en Copilot:**
 
