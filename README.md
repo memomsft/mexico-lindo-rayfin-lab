@@ -206,7 +206,7 @@ contra la UI real de Fabric.
    directo de ahí (botón de copiar al lado del comando) en vez de escribirlo
    a mano, para no arriesgar con typos. Lo vamos a necesitar en los siguientes pasos
 4. Abre una ventana de terminal (recomendado VS Code) y haz **sign in** en tu tenant/subscripcion de Entra ID (mismo tenant donde esta tu Fabric) mediante el comando `az login` de Azure CLI.
-   Si no tienes Azure CLI en la terminal puedes instalarlo ahi mismo desde la terminal con `winget install --exact --id Microsoft.AzureCLI`
+   Si no tienes Azure CLI puedes instalarlo ahi mismo desde la terminal con `winget install --exact --id Microsoft.AzureCLI`
 5. Selecciona y confirma tu subscripcion desde la terminal y ahora procede a pegar el comando que te genero el artefacto de Fabric App, seria algo parecido al siguiente comando:
    
     ```bash
