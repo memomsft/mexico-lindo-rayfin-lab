@@ -214,7 +214,7 @@ contra la UI real de Fabric.
    ```bash
    npm create @microsoft/rayfin@latest -- "app-mexicolindo" --template dataapp --workspace "<tu-workspace>"
    ```
-4. En tu terminal local, pega ese comando, luego:
+4. En tu terminal local (recomendado desde VS Code), pega ese comando, luego:
    ```bash
    cd app-mexicolindo
    npm run dev
