@@ -210,21 +210,25 @@ contra la UI real de Fabric.
 3. Deja que termine de desplegar el recurso. Fabric abre el panel **"Getting Started"** con
    un comando **ya armado con el nombre real de tu workspace** — cópialo
    directo de ahí (botón de copiar al lado del comando) en vez de escribirlo
-   a mano, para no arriesgar un typo en el nombre del workspace:
-   ```bash
+   a mano, para no arriesgar con typos. Lo vamos a necesitar en los siguientes pasos
+4. Abre una ventana de terminal (recomendado VS Code) y haz sign in en tu tenant/subscripcion de Entra ID (mismo tenant donde esta tu Fabric) mediante el comando `az login` de Azure CLI.
+   Si no tienes Azure CLI en la terminal puedes instalarlo ahi mismo desde la terminal con `winget install --exact --id Microsoft.AzureCLI`
+5. Selecciona y confirma tu subscripcion desde la terminal y ahora procede a pegar el comando que te genero el artefacto de Fabric App, seria algo parecido al siguiente comando:
+    ```bash
    npm create @microsoft/rayfin@latest -- "app-mexicolindo" --template dataapp --workspace "<tu-workspace>"
    ```
-4. En tu terminal local (recomendado desde VS Code), pega ese comando, luego:
+7. Te va pedir permisos para instalar archivos y dependencias npm de Rayfin (autorizalo).
+8. Una vez completo el scaffold inicial navega hasta el directorio del proyecto con los siguientes comandos:
+9. 
    ```bash
    cd app-mexicolindo
    npm run dev
    ```
-5. Confirma que el servidor local levanta sin errores (verás una URL local en
-   la terminal). Si el panel muestra "Your app is deploying. Wait for the
-   deploy to complete before starting the frontend", espera a que termine
-   antes de correr `npm run dev`.
+`npm run dev` te deberia proveer un URL para una vista previa de la aplicacion pero actualmente los template **"DataApp"** no se pueden visualizar desde fuera de Fabric por lo que no sera posible
+ver esta vista previa (obtendras un mensaje de 'Can't open this app outside Fabric). 
 
-> 🔀 **Ruta alterna — agente de código:** el mismo panel tiene un botón
+
+> 🔀 **Ruta Alterna/Opcional — agente de código:** el mismo panel del App en Fabric tiene un botón
 > **"Copy prompt"** ("Using an AI coding agent? Skip the steps below") que
 > entrega un prompt equivalente a los pasos 1–4 de arriba, pensado para un
 > agente con permiso de ejecutar comandos de terminal (ej. Copilot en modo
@@ -234,16 +238,17 @@ contra la UI real de Fabric.
 
 ### Bloque 6 — Prompt a Copilot para conectar el modelo semántico (1:20–1:45)
 
-1. Abre VS Code en la carpeta del proyecto y abre el panel de **GitHub
-   Copilot Chat** (o ejecuta `copilot` en una terminal para usar Copilot CLI).
-2. Usa el prompt de abajo. Sigue el patrón recomendado por Microsoft Learn:
+1. Abre otra ventana de VS Code desde la carpeta del proyecto y abre el panel de **GitHub
+   Copilot Chat**  CRTL + Shift + I (o ejecuta `copilot` en una terminal para usar Copilot CLI).
+2. Asegurate de estar en modo **Agente** y utilizar un LLM de tipo Sonnet 4.6 o GPT-5
+3. Usa el prompt de abajo. Sigue el patrón recomendado por Microsoft Learn:
    **una sola instrucción que combina el link del modelo con lo que quieres
    construir**.
 
 **📋 PROMPT — cópialo tal cual en Copilot:**
 
 ```text
-Usa mi modelo semántico de ventas en <link-del-modelo> para generar un
+Conectate a Fabric con mi usuario <tu-usuario-fabric> y usa mi modelo semántico de ventas en <link-del-modelo semantico> para generar un
 dashboard de ventas de México Lindo con: una tarjeta KPI de ventas
 totales, una gráfica de barras de ventas por sucursal, una gráfica de
 línea de ventas por mes, y una tabla con el detalle de platillos más
@@ -253,9 +258,10 @@ vendidos (nombre, categoría, cantidad vendida, monto total).
 Sustituye `<link-del-modelo>` por el link completo que copiaste en el
 Bloque 4 (incluyendo el `?experience=fabric-developer` al final).
 
-3. Copilot generará la conexión al modelo (maneja la autenticación por ti,
+3. Copilot te va pedir autenticar para validar tu acceso con Github y a los recursos, luego generará la conexión al modelo (maneja la autenticación por ti,
    según la documentación oficial) y los componentes visuales.
-4. Pide **un solo ajuste pequeño** para mostrar que se puede iterar:
+4. Dejalo terminar y aprueba las solicitudes que te haga para poder ejecutar los cambios en el app. Copilot va iterar y reintentar cuando no pueda avanzar con algun paso.
+5. Pidele **un solo ajuste pequeño** para mostrar que se puede iterar:
 
 **📋 PROMPT — cópialo tal cual en Copilot:**
 
