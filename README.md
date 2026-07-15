@@ -214,12 +214,14 @@ contra la UI real de Fabric.
 4. Abre una ventana de terminal (recomendado VS Code) y haz sign in en tu tenant/subscripcion de Entra ID (mismo tenant donde esta tu Fabric) mediante el comando `az login` de Azure CLI.
    Si no tienes Azure CLI en la terminal puedes instalarlo ahi mismo desde la terminal con `winget install --exact --id Microsoft.AzureCLI`
 5. Selecciona y confirma tu subscripcion desde la terminal y ahora procede a pegar el comando que te genero el artefacto de Fabric App, seria algo parecido al siguiente comando:
+   
     ```bash
    npm create @microsoft/rayfin@latest -- "app-mexicolindo" --template dataapp --workspace "<tu-workspace>"
    ```
-7. Te va pedir permisos para instalar archivos y dependencias npm de Rayfin (autorizalo).
-8. Una vez completo el scaffold inicial navega hasta el directorio del proyecto con los siguientes comandos:
-9. 
+    
+6. Te va pedir permisos para instalar archivos y dependencias npm de Rayfin (autorizalo).
+7. Una vez completo el scaffold inicial navega hasta el directorio del proyecto con los siguientes comandos:
+8. 
    ```bash
    cd app-mexicolindo
    npm run dev
