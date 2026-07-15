@@ -52,6 +52,8 @@ participante sin depender del facilitador.
       workspace está en una región no soportada — ver punto 2 y 3).
 - [ ] `npx --version` y `node --version` corren sin error en la terminal de
       cada participante.
+- [ ] `az login` corre sin error en la terminal de
+      cada participante.
 
 ---
 
