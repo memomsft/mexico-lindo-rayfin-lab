@@ -29,8 +29,8 @@ participante sin depender del facilitador.
 - [ ] Workspace dedicado para el ejercicio (ej. `WS-MexicoLindo-Lab`).
 - [ ] Capacidad Fabric asignada al workspace, en una región donde **Fabric
       App (preview)** esté disponible. Válidas para este ejercicio:
-      North Central US, West US, West US 2, Central US, Francia Central.
-      **México Central y España Central no son válidas** para este ejercicio
+      `North Central US`, `West US`, `West US 2`, `Central US`, `Francia Central`.
+      **México Central no es válida** para este ejercicio
       (Fabric App no disponible ahí a la fecha de esta guía).
 
 ## 4. Entorno local de cada participante
@@ -54,6 +54,30 @@ participante sin depender del facilitador.
       cada participante.
 - [ ] `az login` corre sin error en la terminal de
       cada participante.
+
+## 6. Solo si vas a hacer la Parte 2 (Foundry IQ) — ver `PARTE2-FOUNDRY-IQ.md`
+
+- [ ] Proyecto de **Microsoft Foundry** creado (toggle "New Foundry" activado).
+- [ ] **Foundry IQ resource** creado con anticipación (Knowledge → Knowledge
+      bases → "Create new resource"). Es un paso obligatorio: sin este
+      recurso no se puede crear el Knowledge Base.
+      - La región puede fallar por falta de capacidad ("This region is at
+        capacity, Azure AI Search isn't accepting new resources in the
+        selected region") — ten una región alternativa lista antes del
+        evento.
+      - Elige **Basic** como pricing tier (el default puede aparecer
+        preseleccionado como Standard S1) — es el mínimo requerido para que
+        agentic retrieval funcione, y suficiente para este ejercicio.
+- [ ] Rol **Workspace Admin** en el workspace de Fabric (`mexico-lindo-ws`)
+      — necesario para poder agregar el Foundry IQ resource a "Manage
+      access". Contributor (el mínimo de la Parte 1) no alcanza. Distinto
+      del **Tenant Admin (Fabric Admin)** que configuró los tenant settings
+      al inicio de este documento — ese es a nivel de todo el tenant, este
+      es acotado a este workspace.
+- [ ] Un **modelo de embeddings desplegado** en Azure OpenAI/Foundry Models
+      (`text-embedding-3-small` alcanza) — lo pide la pantalla de
+      configuración de la fuente OneLake, no es opcional.
+
 
 ---
 
