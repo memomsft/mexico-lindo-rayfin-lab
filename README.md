@@ -376,7 +376,6 @@ mexico-lindo-rayfin-lab/
 ├── README.md                    ← esta guía (para el participante)
 ├── docs/
 │   ├── PRERREQUISITOS.md        ← checklist verificable, para el repo y para enviar por correo
-│   ├── NOTAS-FACILITADOR.md     ← guion de la demo de 30 min (uso interno, no para el participante)
 │   └── PARTE2-FOUNDRY-IQ.md     ← Parte 2 (placeholder): OneLake → Foundry IQ
 ├── assets/
 │   └── flujo-ejercicio.svg      ← diagrama del flujo, referenciado en el README
