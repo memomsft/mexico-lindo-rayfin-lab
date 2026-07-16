@@ -29,6 +29,7 @@ publicado en Fabric. Temática: cadena ficticia de restaurantes **México Lindo*
 - [Agenda y checkpoints](#-agenda-y-checkpoints-2-horas)
 - [Paso a paso detallado](#-paso-a-paso-detallado)
 - [Solución de problemas comunes](#-solución-de-problemas-comunes)
+- [Parte 2 (placeholder) — Foundry IQ](#-parte-2-placeholder--agentic-development-con-foundry-iq)
 - [Fuentes oficiales](#-fuentes-oficiales)
 - [Estructura de este repo](#-estructura-de-este-repo)
 
@@ -340,6 +341,18 @@ Estos comandos con importantes porque permiten iterar el desarrollo local y los 
 
 ---
 
+## 🧭 Parte 2 (placeholder) — Agentic Development con Foundry IQ
+
+Este repo incluye el arranque de una segunda parte: cargar transcripciones
+sintéticas de llamadas al mismo Lakehouse y exponerlas como Knowledge Base en
+**Foundry IQ**, para que más adelante un agente haga análisis de
+transcripciones y sentiment analysis. Ver
+[`docs/PARTE2-FOUNDRY-IQ.md`](./docs/PARTE2-FOUNDRY-IQ.md) — llega hasta
+exponer OneLake en Foundry IQ; la creación del Foundry Agent queda como
+placeholder para completarse en una sesión posterior.
+
+---
+
 ## 📚 Fuentes oficiales
 
 Toda la parte técnica específica de Rayfin/Fabric Apps en esta guía está
@@ -360,14 +373,20 @@ validada contra estas páginas de Microsoft Learn (revisadas el 10 de julio de
 
 ```
 mexico-lindo-rayfin-lab/
-├── README.md                   ← esta guía (para el participante)
+├── README.md                    ← esta guía (para el participante)
 ├── docs/
-│   ├── PRERREQUISITOS.md       ← checklist verificable, para el repo y para enviar por correo
+│   ├── PRERREQUISITOS.md        ← checklist verificable, para el repo y para enviar por correo
+│   ├── NOTAS-FACILITADOR.md     ← guion de la demo de 30 min (uso interno, no para el participante)
+│   └── PARTE2-FOUNDRY-IQ.md     ← Parte 2 (placeholder): OneLake → Foundry IQ
 ├── assets/
-│   └── flujo-ejercicio.svg     ← diagrama del flujo, referenciado en el README
+│   └── flujo-ejercicio.svg      ← diagrama del flujo, referenciado en el README
+├── scripts/
+│   └── generar_transcripciones.py  ← script que generó las transcripciones sintéticas
 └── data/
     ├── categorias.csv
     ├── sucursales.csv
     ├── platillos.csv
-    └── ventas.csv
+    ├── ventas.csv
+    └── transcripciones/         ← 30 archivos JSON (Parte 2)
 ```
+
