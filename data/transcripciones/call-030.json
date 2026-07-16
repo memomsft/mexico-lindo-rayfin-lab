@@ -1,0 +1,34 @@
+{
+  "id": "call-030",
+  "sucursal": "México Lindo Madrid",
+  "fecha": "2026-03-26",
+  "canal": "telefono",
+  "motivo": "error_cuenta",
+  "sentimiento_referencia": "negativo",
+  "transcripcion": [
+    {
+      "hablante": "Cliente",
+      "texto": "Buenas, noté que en la cuenta nos cobraron dos aguas de horchata cuando solo pedimos una."
+    },
+    {
+      "hablante": "Agente",
+      "texto": "Disculpe el error, ¿tiene el ticket a la mano para verificar?"
+    },
+    {
+      "hablante": "Cliente",
+      "texto": "Sí, aquí lo tengo, dice dos aguas de horchata."
+    },
+    {
+      "hablante": "Agente",
+      "texto": "Confirmado, fue un error de captura. Le puedo hacer la devolución de ese monto, ¿cómo pagó?"
+    },
+    {
+      "hablante": "Cliente",
+      "texto": "Con tarjeta, gracias por resolverlo tan rápido."
+    },
+    {
+      "hablante": "Agente",
+      "texto": "Con gusto, disculpe nuevamente el inconveniente."
+    }
+  ]
+}

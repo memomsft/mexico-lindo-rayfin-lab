@@ -1,0 +1,34 @@
+{
+  "id": "call-003",
+  "sucursal": "México Lindo Monterrey",
+  "fecha": "2026-02-02",
+  "canal": "telefono",
+  "motivo": "catering_evento_corporativo",
+  "sentimiento_referencia": "positivo",
+  "transcripcion": [
+    {
+      "hablante": "Cliente",
+      "texto": "Buenas tardes, hablo de la empresa TechNorte, hicimos un pedido de catering para 40 personas el jueves pasado."
+    },
+    {
+      "hablante": "Agente",
+      "texto": "Sí, tengo el pedido aquí. ¿Cómo les fue?"
+    },
+    {
+      "hablante": "Cliente",
+      "texto": "Excelente, llegó puntual, bien presentado, y no nos quedamos cortos de comida. El equipo quedó feliz."
+    },
+    {
+      "hablante": "Agente",
+      "texto": "Qué gusto, muchas gracias por la confianza. ¿Les interesaría dejar registrado el pedido para futuros eventos?"
+    },
+    {
+      "hablante": "Cliente",
+      "texto": "Claro, de hecho ya tenemos otro evento en marzo, les voy a escribir."
+    },
+    {
+      "hablante": "Agente",
+      "texto": "Perfecto, quedamos atentos."
+    }
+  ]
+}

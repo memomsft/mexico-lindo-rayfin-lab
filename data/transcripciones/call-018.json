@@ -1,0 +1,30 @@
+{
+  "id": "call-018",
+  "sucursal": "México Lindo Guadalajara",
+  "fecha": "2026-01-25",
+  "canal": "telefono",
+  "motivo": "reservacion_grupo",
+  "sentimiento_referencia": "neutral",
+  "transcripcion": [
+    {
+      "hablante": "Cliente",
+      "texto": "Buenas tardes, quisiera reservar para 6 personas el viernes a las 8 de la noche."
+    },
+    {
+      "hablante": "Agente",
+      "texto": "Claro, déjeme revisar disponibilidad... sí tenemos espacio a esa hora."
+    },
+    {
+      "hablante": "Cliente",
+      "texto": "Perfecto, ¿a nombre de quién quedaría la reservación?"
+    },
+    {
+      "hablante": "Agente",
+      "texto": "A nombre suyo está bien, ¿me confirma un teléfono de contacto?"
+    },
+    {
+      "hablante": "Cliente",
+      "texto": "Sí, claro, se lo doy."
+    }
+  ]
+}

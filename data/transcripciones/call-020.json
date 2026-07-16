@@ -1,0 +1,30 @@
+{
+  "id": "call-020",
+  "sucursal": "México Lindo Polanco",
+  "fecha": "2026-02-06",
+  "canal": "telefono",
+  "motivo": "solicitud_factura",
+  "sentimiento_referencia": "neutral",
+  "transcripcion": [
+    {
+      "hablante": "Cliente",
+      "texto": "Buenas, necesito la factura de una compra que hice la semana pasada."
+    },
+    {
+      "hablante": "Agente",
+      "texto": "Con gusto, ¿me puede compartir el número de ticket o la fecha exacta?"
+    },
+    {
+      "hablante": "Cliente",
+      "texto": "Fue el jueves pasado, no tengo el ticket a la mano."
+    },
+    {
+      "hablante": "Agente",
+      "texto": "No hay problema, con el nombre y el monto aproximado la puedo localizar."
+    },
+    {
+      "hablante": "Cliente",
+      "texto": "Perfecto, se lo paso por correo entonces."
+    }
+  ]
+}

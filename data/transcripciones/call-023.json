@@ -1,0 +1,30 @@
+{
+  "id": "call-023",
+  "sucursal": "México Lindo Monterrey",
+  "fecha": "2026-02-21",
+  "canal": "telefono",
+  "motivo": "consulta_alergenos",
+  "sentimiento_referencia": "neutral",
+  "transcripcion": [
+    {
+      "hablante": "Cliente",
+      "texto": "Hola, quería preguntar si el mole poblano lleva algún tipo de nuez o cacahuate."
+    },
+    {
+      "hablante": "Agente",
+      "texto": "Sí, el mole lleva un poco de cacahuate en la receta."
+    },
+    {
+      "hablante": "Cliente",
+      "texto": "Entiendo, mi hijo es alérgico, mejor evitamos ese platillo entonces."
+    },
+    {
+      "hablante": "Agente",
+      "texto": "Le recomendaría las enchiladas verdes o el pollo a la plancha, esos no llevan nueces ni cacahuate."
+    },
+    {
+      "hablante": "Cliente",
+      "texto": "Perfecto, muchas gracias por la información tan clara."
+    }
+  ]
+}

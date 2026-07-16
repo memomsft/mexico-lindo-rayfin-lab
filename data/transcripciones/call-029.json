@@ -1,0 +1,30 @@
+{
+  "id": "call-029",
+  "sucursal": "México Lindo San José",
+  "fecha": "2026-03-21",
+  "canal": "telefono",
+  "motivo": "platillo_agotado",
+  "sentimiento_referencia": "negativo",
+  "transcripcion": [
+    {
+      "hablante": "Cliente",
+      "texto": "Hola, fuimos especialmente por la cochinita pibil y ya se había agotado, un poco decepcionante."
+    },
+    {
+      "hablante": "Agente",
+      "texto": "Lamento la decepción, ese platillo se ha vuelto muy popular y a veces se agota temprano."
+    },
+    {
+      "hablante": "Cliente",
+      "texto": "Entiendo, el mesero nos recomendó otra opción y estuvo bien, pero no era lo que buscábamos."
+    },
+    {
+      "hablante": "Agente",
+      "texto": "Le sugiero llamar antes para apartarlo la próxima vez, con gusto se lo guardamos."
+    },
+    {
+      "hablante": "Cliente",
+      "texto": "Buena idea, gracias por la recomendación."
+    }
+  ]
+}

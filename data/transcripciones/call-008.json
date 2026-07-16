@@ -1,0 +1,26 @@
+{
+  "id": "call-008",
+  "sucursal": "México Lindo Monterrey",
+  "fecha": "2026-03-01",
+  "canal": "telefono",
+  "motivo": "resolucion_previa_agradecimiento",
+  "sentimiento_referencia": "positivo",
+  "transcripcion": [
+    {
+      "hablante": "Cliente",
+      "texto": "Hola, hace dos semanas tuve un problema con un pedido y me atendieron muy bien resolviéndolo. Quería agradecer el seguimiento."
+    },
+    {
+      "hablante": "Agente",
+      "texto": "Qué bueno que se resolvió a su satisfacción. Nos importa mucho dar seguimiento a estos casos."
+    },
+    {
+      "hablante": "Cliente",
+      "texto": "Se nota, la verdad, no esperaba que me llamaran de vuelta para confirmar que todo quedó bien."
+    },
+    {
+      "hablante": "Agente",
+      "texto": "Es parte de nuestro compromiso. Gracias por darnos la oportunidad de corregirlo."
+    }
+  ]
+}

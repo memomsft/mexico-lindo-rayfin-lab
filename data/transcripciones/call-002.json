@@ -1,0 +1,30 @@
+{
+  "id": "call-002",
+  "sucursal": "México Lindo Guadalajara",
+  "fecha": "2026-01-18",
+  "canal": "telefono",
+  "motivo": "celebracion_cumpleanos",
+  "sentimiento_referencia": "positivo",
+  "transcripcion": [
+    {
+      "hablante": "Agente",
+      "texto": "Buenas noches, México Lindo Guadalajara, ¿le atiendo en qué?"
+    },
+    {
+      "hablante": "Cliente",
+      "texto": "Quería agradecer, celebramos el cumpleaños de mi mamá el sábado y el equipo se lució, hasta le cantaron con el mariachi grabado."
+    },
+    {
+      "hablante": "Agente",
+      "texto": "Qué alegría, muchas gracias por contarnos. ¿Todo salió como esperaban con el pastel?"
+    },
+    {
+      "hablante": "Cliente",
+      "texto": "Sí, llegó a tiempo y estaba delicioso. Mi mamá se puso a llorar de la emoción."
+    },
+    {
+      "hablante": "Agente",
+      "texto": "Nos encanta escuchar eso. Le compartimos el comentario a la sucursal, gracias por elegirnos para un momento tan especial."
+    }
+  ]
+}

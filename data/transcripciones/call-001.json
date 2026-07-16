@@ -1,0 +1,34 @@
+{
+  "id": "call-001",
+  "sucursal": "México Lindo Polanco",
+  "fecha": "2026-01-12",
+  "canal": "telefono",
+  "motivo": "elogio_comida",
+  "sentimiento_referencia": "positivo",
+  "transcripcion": [
+    {
+      "hablante": "Agente",
+      "texto": "México Lindo Polanco, buenas tardes, ¿en qué le puedo ayudar?"
+    },
+    {
+      "hablante": "Cliente",
+      "texto": "Hola, quería felicitarlos. Fuimos ayer con mi familia y los tacos al pastor estaban increíbles, como los de mi abuela."
+    },
+    {
+      "hablante": "Agente",
+      "texto": "Muchas gracias, qué gusto escuchar eso. ¿Le comento al chef de su parte?"
+    },
+    {
+      "hablante": "Cliente",
+      "texto": "Sí, por favor. También el mesero, Iván creo que se llamaba, muy atento."
+    },
+    {
+      "hablante": "Agente",
+      "texto": "Perfecto, le paso el reconocimiento al equipo. Esperamos verlos pronto de nuevo."
+    },
+    {
+      "hablante": "Cliente",
+      "texto": "Seguro que sí, muchas gracias."
+    }
+  ]
+}

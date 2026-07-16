@@ -1,0 +1,26 @@
+{
+  "id": "call-015",
+  "sucursal": "México Lindo Guadalajara",
+  "fecha": "2026-04-02",
+  "canal": "telefono",
+  "motivo": "elogio_general_sucursal",
+  "sentimiento_referencia": "positivo",
+  "transcripcion": [
+    {
+      "hablante": "Cliente",
+      "texto": "Hola, solo quería decir que esta sucursal siempre nos trata como en casa, ya es nuestro lugar favorito."
+    },
+    {
+      "hablante": "Agente",
+      "texto": "Qué lindo escuchar eso, muchas gracias por su preferencia constante."
+    },
+    {
+      "hablante": "Cliente",
+      "texto": "Con gusto, seguiremos viniendo seguido."
+    },
+    {
+      "hablante": "Agente",
+      "texto": "Los esperamos siempre con gusto."
+    }
+  ]
+}

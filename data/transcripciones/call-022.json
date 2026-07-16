@@ -1,0 +1,30 @@
+{
+  "id": "call-022",
+  "sucursal": "México Lindo Guadalajara",
+  "fecha": "2026-02-16",
+  "canal": "telefono",
+  "motivo": "cambio_fecha_reservacion",
+  "sentimiento_referencia": "neutral",
+  "transcripcion": [
+    {
+      "hablante": "Cliente",
+      "texto": "Buenas, tengo una reservación para mañana pero necesito cambiarla al sábado."
+    },
+    {
+      "hablante": "Agente",
+      "texto": "Claro, déjeme buscarla... la encontré, ¿la misma hora para el sábado?"
+    },
+    {
+      "hablante": "Cliente",
+      "texto": "Sí, por favor, la misma hora."
+    },
+    {
+      "hablante": "Agente",
+      "texto": "Listo, ya quedó movida al sábado a las 7 de la noche."
+    },
+    {
+      "hablante": "Cliente",
+      "texto": "Perfecto, muchas gracias."
+    }
+  ]
+}

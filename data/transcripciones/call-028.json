@@ -1,0 +1,26 @@
+{
+  "id": "call-028",
+  "sucursal": "México Lindo Monterrey",
+  "fecha": "2026-03-16",
+  "canal": "telefono",
+  "motivo": "musica_alta",
+  "sentimiento_referencia": "negativo",
+  "transcripcion": [
+    {
+      "hablante": "Cliente",
+      "texto": "Buenas, quería sugerir que bajen un poco el volumen de la música, estaba muy alta para conversar en la mesa."
+    },
+    {
+      "hablante": "Agente",
+      "texto": "Gracias por la sugerencia, lo comento con el gerente de la sucursal para ajustar el volumen en horas de comida."
+    },
+    {
+      "hablante": "Cliente",
+      "texto": "Se lo agradezco, la comida y el servicio estuvieron bien, solo eso nos incomodó un poco."
+    },
+    {
+      "hablante": "Agente",
+      "texto": "Entendido, tomamos nota para mejorar la experiencia."
+    }
+  ]
+}

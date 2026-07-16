@@ -1,0 +1,30 @@
+{
+  "id": "call-016",
+  "sucursal": "México Lindo Polanco",
+  "fecha": "2026-01-15",
+  "canal": "telefono",
+  "motivo": "horario_apertura",
+  "sentimiento_referencia": "neutral",
+  "transcripcion": [
+    {
+      "hablante": "Cliente",
+      "texto": "Buenas, ¿a qué hora abren los domingos?"
+    },
+    {
+      "hablante": "Agente",
+      "texto": "Los domingos abrimos a las 12 del día y cerramos a las 9 de la noche."
+    },
+    {
+      "hablante": "Cliente",
+      "texto": "Perfecto, ¿y aceptan reservaciones para ese horario?"
+    },
+    {
+      "hablante": "Agente",
+      "texto": "Sí, con gusto, ¿para cuántas personas sería?"
+    },
+    {
+      "hablante": "Cliente",
+      "texto": "Todavía no estoy segura, la próxima semana confirmo, gracias."
+    }
+  ]
+}

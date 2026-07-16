@@ -1,0 +1,30 @@
+{
+  "id": "call-024",
+  "sucursal": "México Lindo San José",
+  "fecha": "2026-02-26",
+  "canal": "telefono",
+  "motivo": "politica_cancelacion",
+  "sentimiento_referencia": "neutral",
+  "transcripcion": [
+    {
+      "hablante": "Cliente",
+      "texto": "Buenas, ¿cuál es la política si necesito cancelar una reservación de último momento?"
+    },
+    {
+      "hablante": "Agente",
+      "texto": "Puede cancelar sin costo hasta 2 horas antes de la reservación."
+    },
+    {
+      "hablante": "Cliente",
+      "texto": "Entiendo, ¿y si es un grupo grande, cambia algo?"
+    },
+    {
+      "hablante": "Agente",
+      "texto": "Para grupos de más de 10 personas pedimos aviso con 24 horas de anticipación."
+    },
+    {
+      "hablante": "Cliente",
+      "texto": "Perfecto, lo voy a tener en cuenta, gracias."
+    }
+  ]
+}

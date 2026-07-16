@@ -1,0 +1,26 @@
+{
+  "id": "call-007",
+  "sucursal": "México Lindo Madrid",
+  "fecha": "2026-02-25",
+  "canal": "telefono",
+  "motivo": "ambiente_musica",
+  "sentimiento_referencia": "positivo",
+  "transcripcion": [
+    {
+      "hablante": "Cliente",
+      "texto": "Buenas, estuvimos anoche en la sucursal de Madrid y el ambiente estaba buenísimo, la música y la decoración muy auténticas."
+    },
+    {
+      "hablante": "Agente",
+      "texto": "Muchas gracias, cuidamos mucho ese detalle para que se sienta el sabor mexicano incluso en Madrid."
+    },
+    {
+      "hablante": "Cliente",
+      "texto": "Se nota, la verdad. Hasta mis amigos españoles quedaron encantados."
+    },
+    {
+      "hablante": "Agente",
+      "texto": "Qué alegría, esperamos verlos pronto de nuevo."
+    }
+  ]
+}

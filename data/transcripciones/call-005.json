@@ -1,0 +1,26 @@
+{
+  "id": "call-005",
+  "sucursal": "México Lindo San José",
+  "fecha": "2026-02-15",
+  "canal": "telefono",
+  "motivo": "recomendacion_mesero",
+  "sentimiento_referencia": "positivo",
+  "transcripcion": [
+    {
+      "hablante": "Cliente",
+      "texto": "Buenas, quería comentar que el mesero nos recomendó el mole poblano y quedó perfecto para el grupo, nadie sabía qué pedir."
+    },
+    {
+      "hablante": "Agente",
+      "texto": "Qué bueno que la recomendación funcionó. ¿Nos puede decir el nombre del mesero para reconocerlo?"
+    },
+    {
+      "hablante": "Cliente",
+      "texto": "Se llamaba Marco, muy amable y paciente con las preguntas del grupo."
+    },
+    {
+      "hablante": "Agente",
+      "texto": "Perfecto, le paso el reconocimiento. Gracias por tomarse el tiempo de contarnos."
+    }
+  ]
+}

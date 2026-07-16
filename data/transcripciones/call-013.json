@@ -1,0 +1,26 @@
+{
+  "id": "call-013",
+  "sucursal": "México Lindo Polanco",
+  "fecha": "2026-03-22",
+  "canal": "telefono",
+  "motivo": "evento_aniversario_empresa",
+  "sentimiento_referencia": "positivo",
+  "transcripcion": [
+    {
+      "hablante": "Cliente",
+      "texto": "Hola, organizamos el aniversario de nuestra empresa en su salón privado y todo salió excelente."
+    },
+    {
+      "hablante": "Agente",
+      "texto": "Qué gusto, felicidades por el aniversario. ¿Hubo algo que le gustaría que mejoráramos?"
+    },
+    {
+      "hablante": "Cliente",
+      "texto": "La verdad no, el servicio, la comida y la decoración estuvieron a la altura del evento."
+    },
+    {
+      "hablante": "Agente",
+      "texto": "Excelente, muchas gracias por la confianza para un evento tan importante."
+    }
+  ]
+}

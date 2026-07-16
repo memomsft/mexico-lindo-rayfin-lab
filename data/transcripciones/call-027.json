@@ -1,0 +1,30 @@
+{
+  "id": "call-027",
+  "sucursal": "México Lindo Guadalajara",
+  "fecha": "2026-03-11",
+  "canal": "telefono",
+  "motivo": "bebida_equivocada",
+  "sentimiento_referencia": "negativo",
+  "transcripcion": [
+    {
+      "hablante": "Cliente",
+      "texto": "Hola, el sábado nos trajeron una michelada en vez del agua de horchata que pedimos, la cambiaron pero tardó un rato."
+    },
+    {
+      "hablante": "Agente",
+      "texto": "Disculpe la confusión, ¿le hicieron algún descuento por el inconveniente?"
+    },
+    {
+      "hablante": "Cliente",
+      "texto": "No, pero tampoco lo pedimos, solo queríamos comentarlo."
+    },
+    {
+      "hablante": "Agente",
+      "texto": "Se lo agradezco, voy a reforzar con el equipo la confirmación de bebidas antes de servir."
+    },
+    {
+      "hablante": "Cliente",
+      "texto": "Perfecto, fuera de eso todo bien."
+    }
+  ]
+}

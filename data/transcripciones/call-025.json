@@ -1,0 +1,30 @@
+{
+  "id": "call-025",
+  "sucursal": "México Lindo Madrid",
+  "fecha": "2026-03-03",
+  "canal": "telefono",
+  "motivo": "consulta_ubicaciones",
+  "sentimiento_referencia": "neutral",
+  "transcripcion": [
+    {
+      "hablante": "Cliente",
+      "texto": "Hola, ¿tienen otra sucursal además de esta en Madrid?"
+    },
+    {
+      "hablante": "Agente",
+      "texto": "Sí, tenemos sucursales en Ciudad de México, Guadalajara, Monterrey y San José de Costa Rica."
+    },
+    {
+      "hablante": "Cliente",
+      "texto": "Ah perfecto, voy a viajar a México pronto, ¿me puede confirmar la dirección de la de Polanco?"
+    },
+    {
+      "hablante": "Agente",
+      "texto": "Claro, se la puedo enviar por mensaje de texto ahora mismo."
+    },
+    {
+      "hablante": "Cliente",
+      "texto": "Excelente, muchas gracias."
+    }
+  ]
+}

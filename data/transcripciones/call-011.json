@@ -1,0 +1,30 @@
+{
+  "id": "call-011",
+  "sucursal": "México Lindo San José",
+  "fecha": "2026-03-14",
+  "canal": "telefono",
+  "motivo": "programa_lealtad",
+  "sentimiento_referencia": "positivo",
+  "transcripcion": [
+    {
+      "hablante": "Agente",
+      "texto": "México Lindo San José, buenas tardes."
+    },
+    {
+      "hablante": "Cliente",
+      "texto": "Hola, quería decir que el programa de puntos me pareció muy justo, ya canjeé un postre gratis y fue fácil."
+    },
+    {
+      "hablante": "Agente",
+      "texto": "Qué bueno que le funcionó sin complicaciones."
+    },
+    {
+      "hablante": "Cliente",
+      "texto": "Sí, la app también es sencilla de usar. Felicidades por el programa."
+    },
+    {
+      "hablante": "Agente",
+      "texto": "Muchas gracias, seguiremos mejorándolo."
+    }
+  ]
+}

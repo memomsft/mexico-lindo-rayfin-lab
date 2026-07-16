@@ -1,0 +1,30 @@
+{
+  "id": "call-017",
+  "sucursal": "México Lindo Monterrey",
+  "fecha": "2026-01-20",
+  "canal": "telefono",
+  "motivo": "opciones_veganas",
+  "sentimiento_referencia": "neutral",
+  "transcripcion": [
+    {
+      "hablante": "Cliente",
+      "texto": "Hola, quería saber si tienen opciones veganas en el menú."
+    },
+    {
+      "hablante": "Agente",
+      "texto": "Sí, tenemos tacos de champiñón, ensalada de nopales y un platillo de frijoles con verduras."
+    },
+    {
+      "hablante": "Cliente",
+      "texto": "Perfecto, ¿todos se pueden pedir sin queso o crema?"
+    },
+    {
+      "hablante": "Agente",
+      "texto": "Sí, se pueden personalizar sin ningún problema."
+    },
+    {
+      "hablante": "Cliente",
+      "texto": "Excelente, muchas gracias por la información."
+    }
+  ]
+}

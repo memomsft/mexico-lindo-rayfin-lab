@@ -1,0 +1,26 @@
+{
+  "id": "call-012",
+  "sucursal": "México Lindo Monterrey",
+  "fecha": "2026-03-18",
+  "canal": "telefono",
+  "motivo": "atencion_sin_gluten",
+  "sentimiento_referencia": "positivo",
+  "transcripcion": [
+    {
+      "hablante": "Cliente",
+      "texto": "Buenas, tengo intolerancia al gluten y el mesero fue muy cuidadoso explicándome qué platillos podía comer."
+    },
+    {
+      "hablante": "Agente",
+      "texto": "Qué bueno, siempre buscamos que el equipo conozca bien esas opciones."
+    },
+    {
+      "hablante": "Cliente",
+      "texto": "Se notó, hasta confirmó con cocina antes de traerme el plato. Me sentí segura comiendo."
+    },
+    {
+      "hablante": "Agente",
+      "texto": "Nos alegra mucho, gracias por contarnos y por confiar en nosotros."
+    }
+  ]
+}

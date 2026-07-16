@@ -1,0 +1,30 @@
+{
+  "id": "call-004",
+  "sucursal": "México Lindo Polanco",
+  "fecha": "2026-02-09",
+  "canal": "telefono",
+  "motivo": "cliente_frecuente",
+  "sentimiento_referencia": "positivo",
+  "transcripcion": [
+    {
+      "hablante": "Agente",
+      "texto": "México Lindo Polanco, buenas tardes."
+    },
+    {
+      "hablante": "Cliente",
+      "texto": "Hola, soy cliente frecuente, vengo casi cada semana, y quería decir que la consistencia es impresionante, siempre sabe igual de bien."
+    },
+    {
+      "hablante": "Agente",
+      "texto": "Muchísimas gracias por su lealtad. ¿Está registrado en nuestro programa de puntos?"
+    },
+    {
+      "hablante": "Cliente",
+      "texto": "Sí, ya llevo bastantes puntos acumulados."
+    },
+    {
+      "hablante": "Agente",
+      "texto": "Qué bueno, pronto le puede alcanzar para un platillo gratis. Gracias por seguir eligiéndonos."
+    }
+  ]
+}

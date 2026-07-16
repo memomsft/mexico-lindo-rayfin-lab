@@ -1,0 +1,26 @@
+{
+  "id": "call-009",
+  "sucursal": "México Lindo Polanco",
+  "fecha": "2026-03-05",
+  "canal": "telefono",
+  "motivo": "grupo_grande_paciencia",
+  "sentimiento_referencia": "positivo",
+  "transcripcion": [
+    {
+      "hablante": "Cliente",
+      "texto": "Buenas tardes, fuimos un grupo de 15 personas el fin de semana y el equipo fue muy paciente con nosotros, tardamos en decidir."
+    },
+    {
+      "hablante": "Agente",
+      "texto": "Qué bueno, grupos grandes a veces requieren más tiempo y coordinación."
+    },
+    {
+      "hablante": "Cliente",
+      "texto": "Pues lo manejaron increíble, cada quien recibió su platillo casi al mismo tiempo."
+    },
+    {
+      "hablante": "Agente",
+      "texto": "Excelente, le paso el reconocimiento al equipo de esa sucursal. Gracias por la confianza para su reunión."
+    }
+  ]
+}

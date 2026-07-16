@@ -1,0 +1,30 @@
+{
+  "id": "call-021",
+  "sucursal": "México Lindo Madrid",
+  "fecha": "2026-02-11",
+  "canal": "telefono",
+  "motivo": "catering_precios",
+  "sentimiento_referencia": "neutral",
+  "transcripcion": [
+    {
+      "hablante": "Cliente",
+      "texto": "Hola, quisiera información sobre el servicio de catering para eventos, precios y opciones."
+    },
+    {
+      "hablante": "Agente",
+      "texto": "Claro, tenemos paquetes desde 20 personas, ¿para qué tipo de evento sería?"
+    },
+    {
+      "hablante": "Cliente",
+      "texto": "Una boda pequeña, unas 50 personas aproximadamente."
+    },
+    {
+      "hablante": "Agente",
+      "texto": "Perfecto, le voy a enviar el catálogo de catering con precios por persona para que lo revise."
+    },
+    {
+      "hablante": "Cliente",
+      "texto": "Muy bien, muchas gracias, quedo atenta al correo."
+    }
+  ]
+}

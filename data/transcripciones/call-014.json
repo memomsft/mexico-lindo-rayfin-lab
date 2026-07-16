@@ -1,0 +1,26 @@
+{
+  "id": "call-014",
+  "sucursal": "México Lindo Madrid",
+  "fecha": "2026-03-27",
+  "canal": "telefono",
+  "motivo": "platillo_temporada",
+  "sentimiento_referencia": "positivo",
+  "transcripcion": [
+    {
+      "hablante": "Cliente",
+      "texto": "Buenas, probé el platillo nuevo de temporada, el de mole con mango, y me encantó la combinación."
+    },
+    {
+      "hablante": "Agente",
+      "texto": "Qué bueno, es un platillo que lanzamos hace poco, nos alegra que haya gustado."
+    },
+    {
+      "hablante": "Cliente",
+      "texto": "Se nota el trabajo detrás, muy equilibrado el dulce con el picante."
+    },
+    {
+      "hablante": "Agente",
+      "texto": "Muchas gracias, le paso el comentario al chef que lo desarrolló."
+    }
+  ]
+}

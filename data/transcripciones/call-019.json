@@ -1,0 +1,30 @@
+{
+  "id": "call-019",
+  "sucursal": "México Lindo San José",
+  "fecha": "2026-02-01",
+  "canal": "telefono",
+  "motivo": "estacionamiento",
+  "sentimiento_referencia": "neutral",
+  "transcripcion": [
+    {
+      "hablante": "Cliente",
+      "texto": "Hola, ¿la sucursal tiene estacionamiento propio?"
+    },
+    {
+      "hablante": "Agente",
+      "texto": "No contamos con estacionamiento propio, pero hay uno público justo al lado con convenio de descuento."
+    },
+    {
+      "hablante": "Cliente",
+      "texto": "Entiendo, ¿el descuento aplica automático o hay que pedir algo?"
+    },
+    {
+      "hablante": "Agente",
+      "texto": "Solo debe pedir el ticket sellado en caja al pagar su consumo."
+    },
+    {
+      "hablante": "Cliente",
+      "texto": "Perfecto, gracias por la aclaración."
+    }
+  ]
+}

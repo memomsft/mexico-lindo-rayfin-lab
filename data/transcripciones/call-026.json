@@ -1,0 +1,34 @@
+{
+  "id": "call-026",
+  "sucursal": "México Lindo Polanco",
+  "fecha": "2026-03-06",
+  "canal": "telefono",
+  "motivo": "servicio_lento_hora_pico",
+  "sentimiento_referencia": "negativo",
+  "transcripcion": [
+    {
+      "hablante": "Cliente",
+      "texto": "Buenas, quería comentar que ayer en la hora de la comida el servicio fue bastante lento, tardaron como 20 minutos en tomar la orden."
+    },
+    {
+      "hablante": "Agente",
+      "texto": "Lamento mucho la demora, ¿a qué hora fue aproximadamente?"
+    },
+    {
+      "hablante": "Cliente",
+      "texto": "Como a la 1:30 de la tarde, estaba bastante lleno."
+    },
+    {
+      "hablante": "Agente",
+      "texto": "Entiendo, en horas pico a veces se satura el personal, voy a comentarlo con el gerente de turno para reforzar el servicio en esos horarios."
+    },
+    {
+      "hablante": "Cliente",
+      "texto": "Se lo agradezco, la comida sí estuvo buena, solo la espera fue larga."
+    },
+    {
+      "hablante": "Agente",
+      "texto": "Gracias por avisarnos, nos ayuda a mejorar."
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "call-010",
+  "sucursal": "México Lindo Guadalajara",
+  "fecha": "2026-03-10",
+  "canal": "telefono",
+  "motivo": "chef_saludo",
+  "sentimiento_referencia": "positivo",
+  "transcripcion": [
+    {
+      "hablante": "Cliente",
+      "texto": "Hola, quería contar que el chef salió a saludarnos a la mesa, fue un detalle muy lindo para nuestro aniversario."
+    },
+    {
+      "hablante": "Agente",
+      "texto": "Qué hermoso, felicidades por su aniversario. Nos encanta que el chef se acerque cuando puede."
+    },
+    {
+      "hablante": "Cliente",
+      "texto": "Fue el broche de oro de la noche, muchas gracias a todo el equipo."
+    },
+    {
+      "hablante": "Agente",
+      "texto": "Gracias a ustedes por elegirnos para celebrar algo tan especial."
+    }
+  ]
+}

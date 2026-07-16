@@ -1,0 +1,30 @@
+{
+  "id": "call-006",
+  "sucursal": "México Lindo Guadalajara",
+  "fecha": "2026-02-20",
+  "canal": "telefono",
+  "motivo": "entrega_domicilio",
+  "sentimiento_referencia": "positivo",
+  "transcripcion": [
+    {
+      "hablante": "Agente",
+      "texto": "México Lindo Guadalajara, buenas tardes."
+    },
+    {
+      "hablante": "Cliente",
+      "texto": "Hola, hice un pedido a domicilio hace rato y llegó rapidísimo, y todavía caliente."
+    },
+    {
+      "hablante": "Agente",
+      "texto": "Qué gusto escuchar eso, a veces el tráfico complica los tiempos."
+    },
+    {
+      "hablante": "Cliente",
+      "texto": "Pues esta vez no, llegó en menos de 25 minutos. El repartidor muy amable también."
+    },
+    {
+      "hablante": "Agente",
+      "texto": "Excelente, le paso el comentario al equipo de reparto. Gracias por su preferencia."
+    }
+  ]
+}
