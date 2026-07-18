@@ -1,17 +1,28 @@
-# Parte 2 — Agentic Development con Foundry IQ (placeholder)
+# Parte 2 — Agentic Development con Foundry IQ
 
-> ⚠️ **Alcance de este documento:** llega hasta **exponer OneLake como fuente
-> de conocimiento en Foundry IQ**. La creación del **Foundry Agent** que
-> consume ese knowledge base para análisis de sentimiento queda como
-> **placeholder** — la completa un peer en una sesión posterior.
+> ✅ **Alcance de este documento:** cubre el flujo **completo** de la Parte 2 —
+> desde exponer OneLake como fuente de conocimiento en Foundry IQ hasta crear
+> el **Foundry Agent** que consume ese knowledge base para análisis de
+> sentimiento, evaluarlo contra un ground truth y definir cómo explotar los
+> resultados. La parte del agente (antes placeholder) fue completada por
+> **Gabriela Drumond** el 17 de julio de 2026.
 
 ## Objetivo
 
 Cargar transcripciones sintéticas de llamadas de servicio al cliente de
-"México Lindo" al mismo Lakehouse de la Parte 1, y exponerlas como fuente de
-conocimiento (**Knowledge Base**) en **Foundry IQ**, para que más adelante un
-agente pueda hacer análisis de transcripciones y sentiment analysis con fines
-de mejora continua del negocio.
+"México Lindo" al mismo Lakehouse de la Parte 1, exponerlas como fuente de
+conocimiento (**Knowledge Base**) en **Foundry IQ**, y conectar un **Foundry
+Agent** (`gpt-5`) que hace análisis de transcripciones y sentiment analysis
+con fines de mejora continua del negocio — evaluando su exactitud contra un
+ground truth.
+
+## 🗺️ Flujo de la Parte 2
+
+<div align="center">
+
+![Flujo Parte 2: transcripciones JSON → Lakehouse en Fabric → Foundry IQ (Knowledge Base) → Foundry Agent (gpt-5) → evaluación y dashboard](../assets/flujo-parte2.svg)
+
+</div>
 
 ## ✅ Validado contra Microsoft Learn
 
@@ -63,6 +74,11 @@ de mejora continua del negocio.
   configuración de la fuente OneLake lo pide para vectorizar el contenido
   indexado. Es distinto del "chat completions model" de la Knowledge Base
   (ese sí es opcional con Minimal); el embedding model no es opcional.
+- Un **modelo de completions (chat) desplegado** para el agente — este
+  laboratorio usó `gpt-5` (Global Standard). Es el modelo que razona sobre
+  cada transcripción al clasificar el sentimiento; se selecciona al crear el
+  Foundry Agent (Paso 4). Es distinto del embedding model (Paso 2) y del
+  "chat completions model" opcional de la Knowledge Base.
 
 ## Dataset: transcripciones sintéticas
 
@@ -186,13 +202,151 @@ Esquema de cada archivo:
 
 ---
 
-## 🚧 Placeholder — a completar por un peer
+## Paso a paso — crear y evaluar el Foundry Agent
 
-- Conectar un **Foundry Agent** a este knowledge base.
-- Diseñar el prompt/instrucciones de retrieval para análisis de
-  transcripciones y sentiment analysis.
-- Definir cómo se van a explotar los resultados para mejora continua del
-  negocio (dashboards, alertas, reportes recurrentes, etc.).
+> Esta sección completa lo que antes era placeholder (completada el 17 de
+> julio de 2026). Recursos usados en este laboratorio: agente
+> `agente-sentimiento-mexicolindo`, modelo de completions `gpt-5`, Knowledge
+> Base `kb-mexicolindo-transcripciones`, Foundry IQ / Azure AI Search
+> `<nombre-del-search>`.
+
+### 4. Crear el Foundry Agent
+
+1. En **Microsoft Foundry**, entra a tu proyecto.
+2. Menú lateral **Create → Agents → + New agent**.
+3. Nombre: `agente-sentimiento-mexicolindo`.
+4. **Completion model:** selecciona `gpt-5` (o el modelo de chat que hayas
+   desplegado). En el Playground suele venir preseleccionado en el campo
+   **Model** del tope — verifícalo.
+
+### 5. Conectar el Knowledge Base al agente
+
+1. En el Playground del agente, expande la sección **Knowledge**.
+2. **Add** y selecciona el Knowledge base existente
+   `kb-mexicolindo-transcripciones` (el que indexaste en el Paso 2). No subas
+   archivos ni crees uno nuevo — se conecta el KB ya indexado.
+3. **Save** (arriba a la derecha).
+
+> ⚠️ **Fricción de permisos #2 — 403 al conectar el KB.** En el primer smoke
+> test el agente puede fallar con `403 Forbidden ... while enumerating tools`
+> sobre el endpoint MCP del Knowledge Base. Causa: la managed identity del
+> **proyecto de Foundry** no tiene rol de lectura de datos sobre el Search.
+> Solución: en `<nombre-del-search>` → **Access control (IAM)** → **Add role
+> assignment** → rol **Search Index Data Reader** → **Managed identity** →
+> selecciona el **Foundry project** correspondiente → **Review + assign**.
+> Espera ~2-3 min a que propague el RBAC. Requiere que el Search esté en
+> **API access control = Role-based** (o Both). Ver
+> [Dos roles de fricción](#dos-roles-de-fricción-feedback-de-la-parte-2).
+
+### 6. Smoke test (validar el grounding)
+
+En el **Chat** del Playground, una pregunta simple para confirmar que el
+agente lee las 30 transcripciones:
+
+> `¿Cuántas transcripciones tienes disponibles y de qué tratan en general?`
+
+Debe responder citando contenido real de las transcripciones (temas, motivos)
+**con citaciones a los documentos** — señal de que el grounding funciona. Si
+responde algo genérico tipo "no tengo acceso a ninguna transcripción", el
+grounding no conectó (revisa el Paso 5 y la fricción de permisos #2).
+
+### 7. Instrucciones del agente (system prompt de sentiment analysis)
+
+Pega esto en el campo **Instructions** del agente y **Save**:
+
+```text
+Eres un analista de sentimiento para México Lindo, una cadena de restaurantes mexicanos.
+
+Tu tarea: analizar transcripciones de llamadas de clientes almacenadas en tu base de conocimiento y clasificar el sentimiento del cliente.
+
+REGLAS:
+1. Clasifica cada transcripción en UNA de estas tres categorías: Positivo, Neutral o Negativo.
+2. Basa tu clasificación ÚNICAMENTE en el contenido de la conversación (lo que dice y expresa el cliente).
+3. PROHIBIDO usar el campo "sentimiento_referencia" si aparece en los datos. Ese campo es la respuesta correcta reservada para evaluación — ignóralo por completo. Si lo usas, el análisis queda invalidado.
+4. Responde SIEMPRE en español.
+
+FORMATO DE SALIDA (por cada transcripción analizada):
+- **Transcripción:** [id, ej. call-001]
+- **Sentimiento:** [Positivo / Neutral / Negativo]
+- **Justificación:** [1-2 frases explicando por qué]
+- **Evidencia:** [cita textual breve de la transcripción que respalda tu clasificación]
+```
+
+> 🔒 **Regla anti-cola.** El prompt prohíbe explícitamente usar el campo
+> `sentimiento_referencia` — que es el ground truth reservado para la
+> evaluación (Paso 8), **no** un atajo para el agente. Es la misma nota que
+> aparece en el dataset arriba.
+
+### 8. Evaluar la exactitud contra el ground truth
+
+1. En el Chat, pide clasificar las 30 en tabla compacta:
+   > `Analiza el sentimiento de TODAS las transcripciones (call-001 a call-030). Responde en tabla con dos columnas: ID y Sentimiento. Sin justificación ni evidencia.`
+2. Compara la salida del agente con el campo `sentimiento_referencia` de cada
+   JSON (ground truth: 15 positivas / 10 neutrales / 5 negativas).
+3. **Resultado de este laboratorio: 96,7% de exactitud (29/30 correctas).**
+
+Matriz de confusión:
+
+| Real \\ Predicho | Positivo | Neutral | Negativo |
+|---|---|---|---|
+| **Positivo** | 15 | 0 | 0 |
+| **Neutral** | 0 | 10 | 0 |
+| **Negativo** | 0 | 1 | 4 |
+
+- Recall Positivo: **100%** · Recall Neutral: **100%** · Recall Negativo: **80%**
+
+> 🕵️ **El único error es la mejor evidencia del ejercicio.** El desacierto fue
+> `call-030` (ground truth = negativo, predicción = Neutral): una queja de
+> cobro donde el cliente mantuvo tono objetivo y **agradeció la resolución**.
+> Las transcripciones están **ordenadas por categoría** (001–015 positivas,
+> 016–025 neutrales, 026–030 negativas). Si el agente hiciera trampa —
+> adivinando por el orden del ID o leyendo `sentimiento_referencia` — habría
+> dicho `call-030` = Negativo para cerrar el bloque. En cambio **leyó el
+> contenido** y discrepó del ground truth: prueba de que la regla anti-cola
+> funciona y de que el agente razona sobre el texto.
+
+### 9. Explotación de resultados y rol de GitHub Copilot
+
+**Destino de los resultados (próximo paso):** escribir el sentimiento
+clasificado de vuelta en OneLake y construir un **dashboard Power BI / Fabric**
+(% positivo/neutral/negativo, tendencia, drill-down por transcripción). Esto
+cierra el ciclo con la Parte 1: el dato sale del Lakehouse, pasa por el agente
+de Foundry, y regresa al Lakehouse para visualización.
+
+**Rol de GitHub Copilot** — la distinción clave para el storytelling:
+
+| Capa | Herramienta | Función |
+|---|---|---|
+| **Dev-time** (construir) | GitHub Copilot | Código de orquestación (OneLake → agente → OneLake), iteración del prompt, medidas DAX y modelo del dashboard |
+| **Run-time** (ejecutar) | Foundry Agent (`gpt-5`) | Ejecuta el sentiment analysis en producción sobre los datos reales |
+
+> GitHub Copilot **acelera a quien construye** la solución; el Foundry Agent
+> **ejecuta** la solución. Microsoft cubre el ciclo completo.
+
+---
+
+## Dos roles de fricción (feedback de la Parte 2)
+
+Al recrear los prerrequisitos desde cero aparecieron **dos asignaciones de rol
+que NO se hacen automáticamente** y bloquearon el flujo hasta corregirlas a
+mano. Conviene documentarlas en el runbook del laboratorio:
+
+| # | Síntoma | Rol requerido | Dirección | Dónde aparece |
+|---|---|---|---|---|
+| 1 | El indexer indexa 0/30 con error `Unauthorized / PermissionDenied` en la llamada de embedding | **Cognitive Services User** | Managed identity del **Search** → recurso de AI | Parte 1 / Paso 2 (indexación del KB) |
+| 2 | El agente falla con `403 Forbidden` al conectar el MCP del KB (`enumerating tools`) | **Search Index Data Reader** | Managed identity del **Foundry project** → `<nombre-del-search>` | Parte 2 / Paso 5 (smoke test) |
+
+**Patrón:** los dos errores son simétricos (Search→AI y Agente→Search) y
+ninguno de los dos roles se asigna automáticamente al recrear la solución. Los
+dos se resuelven igual: IAM → Add role assignment → Managed identity →
+esperar ~2-3 min de propagación del RBAC.
+
+**Recomendación:** incluir estas dos asignaciones explícitamente en el paso a
+paso, justo después de crear los recursos, para que el próximo operador no
+pierda tiempo diagnosticándolas. Además, el Azure AI Search debe estar en
+**API access control = Role-based** (o Both) para que la autenticación por
+managed identity funcione — si está en "API keys only", los roles no tienen
+efecto.
 
 ---
 

@@ -36,12 +36,56 @@ participante sin depender del facilitador.
 ## 4. Entorno local de cada participante
 
 - [ ] **Node.js** (LTS) y **npm** instalados.
-- [ ] **VS Code** instalado, con la extensión de **GitHub Copilot**.
-      (Alternativa: CLI `copilot` instalado, para quienes prefieran terminal
-      en vez de VS Code).
 - [ ] Terminal con acceso a internet saliente (npm, GitHub).
 - [ ] **Azure CLI** instalado en la terminal - `winget install --exact --id Microsoft.AzureCLI`
 - [ ] Git instalado, y el repo de este ejercicio clonado localmente.
+
+### 4.1 GitHub Copilot en VS Code (obligatorio para el ejercicio)
+
+Todo el laboratorio se hace con *vibe development* usando GitHub Copilot, así que
+cada participante necesita tenerlo funcionando **antes** del evento:
+
+- [ ] **VS Code** instalado (versión reciente) —
+      `winget install --exact --id Microsoft.VisualStudioCode`
+- [ ] Extensión **GitHub Copilot** instalada en VS Code
+      (ID: `GitHub.copilot`).
+- [ ] Extensión **GitHub Copilot Chat** instalada en VS Code
+      (ID: `GitHub.copilot-chat`) — es la que habilita el chat y el
+      **modo agente**.
+- [ ] **Sesión iniciada** en VS Code con la cuenta de GitHub que tiene la
+      licencia de Copilot activa (icono de Copilot en la barra inferior →
+      *Sign in*). Verifica que NO aparezca "Copilot: not signed in".
+- [ ] **Licencia de GitHub Copilot activa** para esa cuenta (individual,
+      Business o Enterprise) — sin licencia, la extensión se instala pero no
+      responde.
+- [ ] **Modo agente de Copilot habilitado** en VS Code: abre el panel de
+      Copilot Chat y confirma que puedes seleccionar **Agent** en el selector
+      de modo (Ask / Edit / **Agent**). Si no aparece, actualiza VS Code y las
+      extensiones a la última versión.
+- [ ] (Recomendado) Política de organización que **permita** GitHub Copilot y
+      su acceso a los repos — en tenants corporativos, un admin puede tener
+      bloqueado Copilot o el modo agente. Verifícalo con anticipación.
+
+> **Alternativa por terminal:** quien prefiera línea de comandos puede usar el
+> **GitHub Copilot CLI** (`copilot`) en vez de VS Code. Para este laboratorio
+> guiado recomendamos VS Code + modo agente, porque puede leer el repo completo
+> y conducir el paso a paso.
+
+### 4.2 Laboratorio guiado por Copilot (opcional pero recomendado)
+
+Este repo incluye un archivo **`.github/copilot-instructions.md`** que le enseña
+a Copilot a conducir el laboratorio como tutor: presenta **un paso a la vez**,
+explica qué se hace y por qué, y solo avanza cuando tú confirmas. Para usarlo:
+
+- [ ] Abre la **carpeta del repo clonado** en VS Code (no un archivo suelto —
+      la carpeta, para que Copilot detecte `.github/copilot-instructions.md`).
+- [ ] Abre **Copilot Chat en modo Agent**.
+- [ ] Escribe algo como: *"Vamos a hacer el laboratorio México Lindo, guíame
+      paso a paso"*. Copilot leerá los docs del repo y empezará a conducirte.
+
+> Copilot **guía y valida** los pasos de portal (Foundry, Fabric, Azure) — no
+> hace clic por ti — y **puede ejecutar** los pasos locales (git, terminal,
+> archivos) confirmando antes.
 
 ## 5. Verificación rápida (el día antes del evento)
 
@@ -54,6 +98,9 @@ participante sin depender del facilitador.
       cada participante.
 - [ ] `az login` corre sin error en la terminal de
       cada participante.
+- [ ] En VS Code, el icono de **Copilot** muestra sesión iniciada (no "not
+      signed in") y el panel de **Copilot Chat** permite seleccionar el modo
+      **Agent**.
 
 ## 6. Solo si vas a hacer la Parte 2 (Foundry IQ) — ver `PARTE2-FOUNDRY-IQ.md`
 
@@ -77,6 +124,19 @@ participante sin depender del facilitador.
 - [ ] Un **modelo de embeddings desplegado** en Azure OpenAI/Foundry Models
       (`text-embedding-3-small` alcanza) — lo pide la pantalla de
       configuración de la fuente OneLake, no es opcional.
+- [ ] Un **modelo de completions (chat) desplegado** para el agente
+      (`gpt-5` en este laboratorio) — es el que razona sobre cada
+      transcripción al clasificar el sentimiento; se selecciona al crear el
+      Foundry Agent. Distinto del embedding model.
+- [ ] Dos **asignaciones de rol RBAC** que NO se crean solas (ver detalle en
+      `PARTE2-FOUNDRY-IQ.md` → "Dos roles de fricción"):
+      - **Cognitive Services User** para la managed identity del **Search**
+        sobre el recurso de AI — sin esto el indexer indexa 0/30.
+      - **Search Index Data Reader** para la managed identity del **Foundry
+        project** sobre el Search — sin esto el agente da `403` al conectar
+        el KB.
+      - El Azure AI Search debe estar en **API access control = Role-based**
+        (o Both) para que estas identidades funcionen.
 
 
 ---
