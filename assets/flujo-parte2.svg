@@ -1,0 +1,38 @@
+<svg width="100%" viewBox="0 0 680 560" xmlns="http://www.w3.org/2000/svg" role="img" font-family="Segoe UI, Arial, sans-serif">
+<title>Flujo de la Parte 2 — Foundry IQ + Foundry Agent (México Lindo)</title>
+<desc>30 transcripciones JSON se cargan al mismo Lakehouse en Fabric, se exponen como Knowledge Base en Foundry IQ (OneLake indexado con embeddings), un Foundry Agent con gpt-5 hace sentiment analysis con regla anti-cola, y los resultados se evalúan (96,7% de exactitud) para alimentar un dashboard en Power BI / Fabric.</desc>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+<path d="M2 1L8 5L2 9" fill="none" stroke="#888780" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</marker>
+</defs>
+
+<!-- 1. Transcripciones JSON -->
+<rect x="160" y="40" width="360" height="56" rx="8" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="0.5"/>
+<text x="340" y="58" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="500" fill="#444441">Transcripciones JSON</text>
+<text x="340" y="76" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#5F5E5A">30 llamadas de este repo</text>
+<line x1="340" y1="96" x2="340" y2="146" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+<!-- 2. Lakehouse -->
+<rect x="160" y="146" width="360" height="56" rx="8" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+<text x="340" y="164" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="500" fill="#0C447C">Lakehouse en Fabric</text>
+<text x="340" y="182" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#185FA5">Files/transcripciones/</text>
+<line x1="340" y1="202" x2="340" y2="252" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+<!-- 3. Foundry IQ Knowledge Base -->
+<rect x="160" y="252" width="360" height="56" rx="8" fill="#FBF0E0" stroke="#B5730F" stroke-width="0.5"/>
+<text x="340" y="270" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="500" fill="#8A5608">Foundry IQ · Knowledge Base</text>
+<text x="340" y="288" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#B5730F">OneLake indexado + embeddings</text>
+<line x1="340" y1="308" x2="340" y2="358" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+<!-- 4. Foundry Agent -->
+<rect x="160" y="358" width="360" height="56" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.5"/>
+<text x="340" y="376" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="500" fill="#3C3489">Foundry Agent (gpt-5)</text>
+<text x="340" y="394" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#534AB7">sentiment analysis · regla anti-cola</text>
+<line x1="340" y1="414" x2="340" y2="464" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+<!-- 5. Evaluación y dashboard -->
+<rect x="160" y="464" width="360" height="56" rx="8" fill="#EAF3DE" stroke="#3B6D11" stroke-width="0.5"/>
+<text x="340" y="482" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="500" fill="#27500A">Evaluación &amp; dashboard</text>
+<text x="340" y="500" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#3B6D11">96,7% exactitud → Power BI / Fabric</text>
+</svg>

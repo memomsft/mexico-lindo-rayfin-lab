@@ -29,7 +29,7 @@ publicado en Fabric. Temática: cadena ficticia de restaurantes **México Lindo*
 - [Agenda y checkpoints](#-agenda-y-checkpoints-2-horas)
 - [Paso a paso detallado](#-paso-a-paso-detallado)
 - [Solución de problemas comunes](#-solución-de-problemas-comunes)
-- [Parte 2 (placeholder) — Foundry IQ](#-parte-2-placeholder--agentic-development-con-foundry-iq)
+- [Parte 2 — Foundry IQ](#-parte-2--agentic-development-con-foundry-iq)
 - [Fuentes oficiales](#-fuentes-oficiales)
 - [Estructura de este repo](#-estructura-de-este-repo)
 
@@ -135,6 +135,13 @@ gobierno, no solo por disponibilidad de la feature.
 ---
 
 ## 📖 Paso a paso detallado
+
+> 🤖 **¿Prefieres que GitHub Copilot te guíe?** Abre la **carpeta de este repo**
+> en VS Code, abre **Copilot Chat en modo Agent** y escribe *"vamos a hacer el
+> laboratorio, guíame paso a paso"*. Copilot leerá
+> [`.github/copilot-instructions.md`](./.github/copilot-instructions.md) y te
+> conducirá un paso a la vez, explicando cada acción. (Requiere los
+> prerrequisitos de Copilot — ver [`docs/PRERREQUISITOS.md`](./docs/PRERREQUISITOS.md) §4.1.)
 
 ### Bloque 1 — Verificación de prerrequisitos (0:00–0:15)
 
@@ -341,15 +348,25 @@ Estos comandos con importantes porque permiten iterar el desarrollo local y los 
 
 ---
 
-## 🧭 Parte 2 (placeholder) — Agentic Development con Foundry IQ
+## 🧭 Parte 2 — Agentic Development con Foundry IQ
 
-Este repo incluye el arranque de una segunda parte: cargar transcripciones
-sintéticas de llamadas al mismo Lakehouse y exponerlas como Knowledge Base en
-**Foundry IQ**, para que más adelante un agente haga análisis de
-transcripciones y sentiment analysis. Ver
-[`docs/PARTE2-FOUNDRY-IQ.md`](./docs/PARTE2-FOUNDRY-IQ.md) — llega hasta
-exponer OneLake en Foundry IQ; la creación del Foundry Agent queda como
-placeholder para completarse en una sesión posterior.
+Este repo incluye una segunda parte: cargar transcripciones sintéticas de
+llamadas al mismo Lakehouse, exponerlas como Knowledge Base en **Foundry IQ**,
+y crear un **Foundry Agent** (`gpt-5`) que hace análisis de sentimiento sobre
+ellas. Incluye una **regla anti-cola** (el agente no puede usar el ground
+truth como atajo) y una evaluación de exactitud contra ese ground truth.
+
+**Resultado:** el agente alcanzó **96,7% de exactitud (29/30)** clasificando
+las transcripciones en Positivo / Neutral / Negativo. El próximo paso natural
+es escribir el sentimiento de vuelta a OneLake y visualizarlo en un dashboard
+Power BI / Fabric, cerrando el ciclo con la Parte 1.
+
+Ver el flujo completo — crear el agente, conectar el KB, el prompt de
+sentiment analysis, la evaluación y las **dos asignaciones de rol RBAC** que
+no se crean solas — en
+[`docs/PARTE2-FOUNDRY-IQ.md`](./docs/PARTE2-FOUNDRY-IQ.md).
+
+> Parte 2 completada por **Gabriela Drumond** (17 de julio de 2026).
 
 ---
 
@@ -374,11 +391,14 @@ validada contra estas páginas de Microsoft Learn (revisadas el 10 de julio de
 ```
 mexico-lindo-rayfin-lab/
 ├── README.md                    ← esta guía (para el participante)
+├── .github/
+│   └── copilot-instructions.md  ← guía para GitHub Copilot (modo agente): conduce el lab paso a paso
 ├── docs/
 │   ├── PRERREQUISITOS.md        ← checklist verificable, para el repo y para enviar por correo
-│   └── PARTE2-FOUNDRY-IQ.md     ← Parte 2 (placeholder): OneLake → Foundry IQ
+│   └── PARTE2-FOUNDRY-IQ.md     ← Parte 2 (completa): OneLake → Foundry IQ → Foundry Agent + evaluación
 ├── assets/
-│   └── flujo-ejercicio.svg      ← diagrama del flujo, referenciado en el README
+│   ├── flujo-ejercicio.svg      ← diagrama del flujo (Parte 1), referenciado en el README
+│   └── flujo-parte2.svg         ← diagrama del flujo (Parte 2), referenciado en PARTE2-FOUNDRY-IQ.md
 ├── scripts/
 │   └── generar_transcripciones.py  ← script que generó las transcripciones sintéticas
 └── data/
