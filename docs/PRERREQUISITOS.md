@@ -5,19 +5,16 @@ participante sin depender del facilitador.
 
 ## 1. Acceso y licencias
 
-- [ ] Cuenta de Microsoft con acceso a Microsoft Fabric.
-- [ ] Licencia de **GitHub Copilot** activa (individual o de negocio) para
-      cada participante que hará el ejercicio hands-on.
-- [ ] Permisos de **Contributor o Admin** en el workspace de Fabric que se
-      usará para el ejercicio.
+- [ ] Cuenta de Microsoft con acceso a Microsoft Fabric. Se recomienda un capacity F8 para el area de trabajo
+- [ ] Licencia de Power BI Pro para poder crear y publicar modelos semanticos.
+- [ ] Licencia de **GitHub Copilot** activa (individual o de negocio) para cada participante que hará el ejercicio hands-on.
+- [ ] Permisos de **Contributor o Admin** en el workspace de Fabric que se usará para el ejercicio.
 
 ## 2. Configuración de administrador de Fabric (requiere un Tenant Admin)
 
-- [ ] Workload **"Fabric Apps (preview)"** habilitado en
-      *Fabric Admin Portal → Tenant settings* (para toda la organización o
+- [ ] Workload **"Fabric Apps (preview)"** habilitado en *Fabric Admin Portal → Tenant settings* (para toda la organización o
       para el grupo de seguridad que participará).
-- [ ] Setting **"Semantic Model Execute Queries REST API"** habilitado en
-      *Fabric Admin Portal → Integration settings*. Este permiso es el que
+- [ ] Setting **"Semantic Model Execute Queries REST API"** habilitado en *Fabric Admin Portal → Integration settings*. Este permiso es el que
       usa la app para consultar el modelo semántico vía DAX.
 
 > Si quien coordina este ejercicio en tu organización no es Tenant Admin, este punto
