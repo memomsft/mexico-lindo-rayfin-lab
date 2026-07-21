@@ -127,12 +127,11 @@ explica qué se hace y por qué, y solo avanza cuando tú confirmas. Para usarlo
       Foundry Agent. Distinto del embedding model.
 - [ ] Dos **asignaciones de rol RBAC** que NO se crean solas (ver detalle en
       `PARTE2-FOUNDRY-IQ.md` → "Dos roles de fricción"):
-      
        - **Cognitive Services User** para la managed identity del **Search**
-        sobre el recurso de AI — sin esto el indexer indexa 0/30. 
+        sobre el recurso de AI — sin esto el indexer indexa 0/30.  
        - **Search Index Data Reader** para la managed identity del **Foundry
         project** sobre el Search — sin esto el agente da `403` al conectar
-        el KB. 
+        el KB.  
       - El Azure AI Search debe estar en **API access control = Role-based**
         (o Both) para que estas identidades funcionen.
 
