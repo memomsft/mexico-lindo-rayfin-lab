@@ -8,7 +8,7 @@ participante sin depender del facilitador.
 - [ ] Cuenta de Microsoft con acceso a Microsoft Fabric. Se recomienda un capacity F8 para el area de trabajo
 - [ ] Licencia de Power BI Pro para poder crear y publicar modelos semanticos.
 - [ ] Licencia de **GitHub Copilot** activa (individual o de negocio) para cada participante que hará el ejercicio hands-on.
-- [ ] Permisos de **Contributor o Admin** en el workspace de Fabric que se usará para el ejercicio.
+- [ ] Permisos de **Workspsce Admin** en el workspace de Fabric que se usará para el ejercicio.
 
 ## 2. Configuración de administrador de Fabric (requiere un Tenant Admin)
 
