@@ -5,10 +5,10 @@ participante sin depender del facilitador.
 
 ## 1. Acceso y licencias
 
-- [ ] Cuenta de Microsoft con acceso a Microsoft Fabric. Se recomienda un capacity F8 para el area de trabajo
-- [ ] Licencia de Power BI Pro para poder crear y publicar modelos semanticos.
+- [ ] Cuenta de Microsoft con acceso a Microsoft Fabric. Se recomienda una capacidad F8 para el área de trabajo.
+- [ ] Licencia de Power BI Pro para poder crear y publicar modelos semánticos.
 - [ ] Licencia de **GitHub Copilot** activa (individual o de negocio) para cada participante que hará el ejercicio hands-on.
-- [ ] Permisos de **Workspsce Admin** en el workspace de Fabric que se usará para el ejercicio.
+- [ ] Permisos de **Contributor o Admin** en el workspace de Fabric que se usará para el ejercicio.
 
 ## 2. Configuración de administrador de Fabric (requiere un Tenant Admin)
 
@@ -23,7 +23,7 @@ participante sin depender del facilitador.
 
 ## 3. Workspace y capacidad
 
-- [ ] Workspace dedicado para el ejercicio (ej. `WS-MexicoLindo-Lab`).
+- [ ] Workspace dedicado para el ejercicio (ej. `mexico-lindo-ws`).
 - [ ] Capacidad Fabric asignada al workspace, en una región donde **Fabric
       App (preview)** esté disponible. Válidas para este ejercicio:
       `North Central US`, `West US`, `West US 2`, `Central US`, `Francia Central`.
@@ -34,7 +34,7 @@ participante sin depender del facilitador.
 
 - [ ] **Node.js** (LTS) y **npm** instalados.
 - [ ] Terminal con acceso a internet saliente (npm, GitHub).
-- [ ] **Azure CLI** instalado en la terminal - `winget install --exact --id Microsoft.AzureCLI`
+- [ ] **Azure CLI** instalado en la terminal — `winget install --exact --id Microsoft.AzureCLI`
 - [ ] Git instalado, y el repo de este ejercicio clonado localmente.
 
 ### 4.1 GitHub Copilot en VS Code (obligatorio para el ejercicio)
@@ -121,21 +121,22 @@ explica qué se hace y por qué, y solo avanza cuando tú confirmas. Para usarlo
 - [ ] Un **modelo de embeddings desplegado** en Azure OpenAI/Foundry Models
       (`text-embedding-3-small` alcanza) — lo pide la pantalla de
       configuración de la fuente OneLake, no es opcional.
-- [ ] Un **modelo de completions (chat) desplegado** para el agente
-      (`gpt-5` en este laboratorio) — es el que razona sobre cada
-      transcripción al clasificar el sentimiento; se selecciona al crear el
-      Foundry Agent. Distinto del embedding model.
-- [ ] Dos **asignaciones de rol RBAC** que NO se crean solas (ver detalle en
-      `PARTE2-FOUNDRY-IQ.md` → "Dos roles de fricción"):
-- **Cognitive Services User** para la managed identity del **Search**
-        sobre el recurso de AI — sin esto el indexer indexa 0/30.
-      
-- **Search Index Data Reader** para la managed identity del **Foundry
-  project** sobre el Search — sin esto el agente da `403` al conectar
-        el KB.  
-- El Azure AI Search debe estar en **API access control = Role-based**
+- [ ] Un **modelo de completions (chat) desplegado** para el agente — este
+      laboratorio usó `gpt-5`, pero puedes usar el modelo que prefieras
+      **siempre que no sea uno muy básico/lite** (el análisis de sentimiento
+      se beneficia de mejor razonamiento). Es el modelo que razona sobre
+      cada transcripción al clasificar el sentimiento; se selecciona al
+      crear el Foundry Agent. Distinto del embedding model.
+- [ ] Dos **asignaciones de rol RBAC** que NO se crean solas (se resuelven en
+      el momento donde aparecen dentro del paso a paso de
+      `PARTE2-FOUNDRY-IQ.md`):
+      - **Cognitive Services OpenAI User** para la managed identity del
+        **Search** sobre el recurso de AI — sin esto el indexer indexa 0/30.
+      - **Search Index Data Reader** para la managed identity del **Foundry
+        project** sobre el Search — sin esto el agente da `403` al conectar
+        el KB.
+      - El Azure AI Search debe estar en **API access control = Role-based**
         (o Both) para que estas identidades funcionen.
-
 
 ---
 

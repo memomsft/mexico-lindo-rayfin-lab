@@ -4,8 +4,7 @@
 > desde exponer OneLake como fuente de conocimiento en Foundry IQ hasta crear
 > el **Foundry Agent** que consume ese knowledge base para análisis de
 > sentimiento, evaluarlo contra un ground truth y definir cómo explotar los
-> resultados. La parte del agente (antes placeholder) fue completada por
-> **Gabriela Drumond** el 17 de julio de 2026.
+> resultados.
 
 ## Objetivo
 
@@ -75,10 +74,12 @@ ground truth.
   indexado. Es distinto del "chat completions model" de la Knowledge Base
   (ese sí es opcional con Minimal); el embedding model no es opcional.
 - Un **modelo de completions (chat) desplegado** para el agente — este
-  laboratorio usó `gpt-5` (Global Standard). Es el modelo que razona sobre
-  cada transcripción al clasificar el sentimiento; se selecciona al crear el
-  Foundry Agent (Paso 4). Es distinto del embedding model (Paso 2) y del
-  "chat completions model" opcional de la Knowledge Base.
+  laboratorio usó `gpt-5` (Global Standard). Puedes usar otro modelo de
+  completions siempre que **no sea uno muy básico/lite** — el análisis de
+  sentimiento se beneficia de mejor razonamiento. Es el modelo que razona
+  sobre cada transcripción al clasificar el sentimiento; se selecciona al
+  crear el Foundry Agent (Paso 4). Es distinto del embedding model (Paso 2)
+  y del "chat completions model" opcional de la Knowledge Base.
 
 ## Dataset: transcripciones sintéticas
 
@@ -189,6 +190,16 @@ Esquema de cada archivo:
     estado en el portal de Azure AI Search — indexador, índice, skillset y
     data source se crean automáticamente).
 
+> ⚠️ **Fricción de permisos #1 — indexer en 0/30 con error
+> `Unauthorized / PermissionDenied`.** Causa: la managed identity del
+> **Search** no tiene permiso para llamar al modelo de embeddings. Solución:
+> en el recurso de **Azure OpenAI/Foundry Models** → **Access control
+> (IAM)** → **Add role assignment** → rol **Cognitive Services OpenAI
+> User** → **Managed identity** → selecciona tu **Foundry IQ resource /
+> Search** → **Review + assign**. Espera ~2-3 min a que propague el RBAC y
+> vuelve a correr el indexer. Requiere que el Search esté en **API access
+> control = Role-based** (o Both).
+
 ### 3. Validar
 
 - En Azure AI Search, usa **Search Explorer** para confirmar que los 30
@@ -204,8 +215,7 @@ Esquema de cada archivo:
 
 ## Paso a paso — crear y evaluar el Foundry Agent
 
-> Esta sección completa lo que antes era placeholder (completada el 17 de
-> julio de 2026). Recursos usados en este laboratorio: agente
+> Recursos usados en este laboratorio: agente
 > `agente-sentimiento-mexicolindo`, modelo de completions `gpt-5`, Knowledge
 > Base `kb-mexicolindo-transcripciones`, Foundry IQ / Azure AI Search
 > `<nombre-del-search>`.
@@ -216,8 +226,9 @@ Esquema de cada archivo:
 2. Menú lateral **Create → Agents → + New agent**.
 3. Nombre: `agente-sentimiento-mexicolindo`.
 4. **Completion model:** selecciona `gpt-5` (o el modelo de chat que hayas
-   desplegado). En el Playground suele venir preseleccionado en el campo
-   **Model** del tope — verifícalo.
+   desplegado — evita modelos muy básicos/lite, el razonamiento sobre
+   texto libre se beneficia de un modelo más capaz). En el Playground suele
+   venir preseleccionado en el campo **Model** del tope — verifícalo.
 
 ### 5. Conectar el Knowledge Base al agente
 
@@ -235,8 +246,7 @@ Esquema de cada archivo:
 > assignment** → rol **Search Index Data Reader** → **Managed identity** →
 > selecciona el **Foundry project** correspondiente → **Review + assign**.
 > Espera ~2-3 min a que propague el RBAC. Requiere que el Search esté en
-> **API access control = Role-based** (o Both). Ver
-> [Dos roles de fricción](#dos-roles-de-fricción-feedback-de-la-parte-2).
+> **API access control = Role-based** (o Both).
 
 ### 6. Smoke test (validar el grounding)
 
@@ -307,11 +317,15 @@ Matriz de confusión:
 
 ### 9. Explotación de resultados y rol de GitHub Copilot
 
-**Destino de los resultados (próximo paso):** escribir el sentimiento
-clasificado de vuelta en OneLake y construir un **dashboard Power BI / Fabric**
-(% positivo/neutral/negativo, tendencia, drill-down por transcripción). Esto
-cierra el ciclo con la Parte 1: el dato sale del Lakehouse, pasa por el agente
-de Foundry, y regresa al Lakehouse para visualización.
+**Destino de los resultados — tarea sugerida (Parte 3, no incluida en este
+laboratorio):** escribir el sentimiento clasificado de vuelta en OneLake y
+construir un **dashboard Power BI / Fabric** (% positivo/neutral/negativo,
+tendencia, drill-down por transcripción). Esto cerraría el ciclo con la
+Parte 1: el dato sale del Lakehouse, pasa por el agente de Foundry, y
+regresa al Lakehouse para visualización. Queda como ejercicio propuesto
+para que el participante lo construya por su cuenta con lo aprendido en la
+Parte 1 (modelo semántico + Fabric App) — no lo cubrimos en este repo por
+tiempo.
 
 **Rol de GitHub Copilot** — la distinción clave para el storytelling:
 
@@ -322,31 +336,6 @@ de Foundry, y regresa al Lakehouse para visualización.
 
 > GitHub Copilot **acelera a quien construye** la solución; el Foundry Agent
 > **ejecuta** la solución. Microsoft cubre el ciclo completo.
-
----
-
-## Dos roles de fricción (feedback de la Parte 2)
-
-Al recrear los prerrequisitos desde cero aparecieron **dos asignaciones de rol
-que NO se hacen automáticamente** y bloquearon el flujo hasta corregirlas a
-mano. Conviene documentarlas en el runbook del laboratorio:
-
-| # | Síntoma | Rol requerido | Dirección | Dónde aparece |
-|---|---|---|---|---|
-| 1 | El indexer indexa 0/30 con error `Unauthorized / PermissionDenied` en la llamada de embedding | **Cognitive Services User** | Managed identity del **Search** → recurso de AI | Parte 1 / Paso 2 (indexación del KB) |
-| 2 | El agente falla con `403 Forbidden` al conectar el MCP del KB (`enumerating tools`) | **Search Index Data Reader** | Managed identity del **Foundry project** → `<nombre-del-search>` | Parte 2 / Paso 5 (smoke test) |
-
-**Patrón:** los dos errores son simétricos (Search→AI y Agente→Search) y
-ninguno de los dos roles se asigna automáticamente al recrear la solución. Los
-dos se resuelven igual: IAM → Add role assignment → Managed identity →
-esperar ~2-3 min de propagación del RBAC.
-
-**Recomendación:** incluir estas dos asignaciones explícitamente en el paso a
-paso, justo después de crear los recursos, para que el próximo operador no
-pierda tiempo diagnosticándolas. Además, el Azure AI Search debe estar en
-**API access control = Role-based** (o Both) para que la autenticación por
-managed identity funcione — si está en "API keys only", los roles no tienen
-efecto.
 
 ---
 

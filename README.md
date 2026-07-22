@@ -71,7 +71,9 @@ Resumen rápido:
   esté disponible** (ver tabla de regiones abajo). Mexico Central y Spain
   Central **no** son válidas para este ejercicio.
 - Permisos de **Contributor o Admin** en el workspace.
+- Licencia de **Power BI Pro** (para crear y publicar el modelo semántico).
 - Node.js + npm instalados localmente.
+- **Azure CLI** instalado (`az login` funcionando).
 - VS Code con la extensión de GitHub Copilot, o el CLI `copilot` instalado
   (terminal).
 - Licencia de GitHub Copilot activa.
@@ -121,7 +123,7 @@ gobierno, no solo por disponibilidad de la feature.
 | 1. Verificación de prerrequisitos | 0:00–0:15 | Login a Fabric OK, workload Fabric Apps habilitado, workspace en región correcta |
 | 2. Carga del dataset al Lakehouse | 0:15–0:35 | Las 4 tablas (`categorias`, `sucursales`, `platillos`, `ventas`) visibles como Delta Tables |
 | 3. Creación del modelo semántico | 0:35–0:55 | Modelo publicado, relaciones entre tablas creadas, una medida DAX básica probada (ej. `Total Ventas`) |
-| 4. Obtener share link del modelo | 0:55–1:05 | Link de tipo `.../modeling/<model-id>/modelView` copiado |
+| 4. Obtener el nombre del modelo semántico | 0:55–1:05 | Nombre del modelo semántico copiado, confirmado único en el workspace |
 | 5. Scaffold del Fabric App (plantilla `dataapp`) | 1:05–1:20 | Proyecto local creado, `npm run dev` corre sin errores |
 | 6. Prompt a Copilot para conectar el modelo y generar visuales | 1:20–1:45 | La app muestra al menos 1 KPI, 1 gráfica y 1 tabla con datos reales del modelo |
 | 7. Ajustes de estilo/branding vía Copilot | 1:45–1:55 | Marca "México Lindo" aplicada de forma consistente |
@@ -197,8 +199,10 @@ tiempo hacen perder en vivo.
 ### Bloque 4 — Obtener el nombre del modelo (0:55–1:05)
 
 1. Abre el modelo semántico publicado en el **Power BI Service**.
-2. Copia el nombre del modelo semantico lo vas a pegar en el prompt a Copilot en el
-   Bloque 6.
+2. Copia el nombre exacto del modelo semántico — lo vas a pegar en el
+   prompt a Copilot en el Bloque 6. Confirma que sea único dentro del
+   workspace, para que Copilot no lo confunda con otro modelo de nombre
+   parecido.
 
 ### Bloque 5 — Scaffold del Fabric App con la plantilla `dataapp` (1:05–1:20)
 
@@ -209,69 +213,95 @@ contra la UI real de Fabric.
 1. En el workspace, **New item → App**. Nómbralo `app-mexicolindo`.
 2. En la pantalla **"Pick a template to get started"**, elige la tarjeta
    **"Data App"** (no "Blank App" ni "To-Do App").
-3. Deja que termine de desplegar el recurso. Fabric abre el panel **"Getting Started"** con
-   un comando **ya armado con el nombre real de tu workspace** — cópialo
-   directo de ahí (botón de copiar al lado del comando) en vez de escribirlo
-   a mano, para no arriesgar con typos. Lo vamos a necesitar en los siguientes pasos
-4. Abre una ventana de terminal (recomendado VS Code) y haz **sign in** en tu tenant/subscripcion de Entra ID (mismo tenant donde esta tu Fabric) mediante el comando `az login` de Azure CLI.
-   Si no tienes Azure CLI puedes instalarlo ahi mismo desde la terminal con `winget install --exact --id Microsoft.AzureCLI`
-5. Selecciona y confirma tu subscripcion desde la terminal y ahora procede a pegar el comando que te genero el artefacto de Fabric App, seria algo parecido al siguiente comando:
-   
-    ```bash
+3. Deja que termine de desplegar el recurso. Fabric abre el panel
+   **"Getting Started"** con un comando **ya armado con el nombre real de tu
+   workspace** — cópialo directo de ahí (botón de copiar al lado del
+   comando) en vez de escribirlo a mano, para no arriesgar un typo. Lo vamos
+   a necesitar en el siguiente paso.
+4. Abre una ventana de terminal (recomendado VS Code) y haz **sign in** en
+   tu tenant/suscripción de Entra ID (el mismo tenant donde está tu Fabric)
+   con `az login` de Azure CLI. **Por qué:** esto asegura que Copilot opere
+   sobre el tenant/suscripción correcto desde el inicio, evitando que
+   busque recursos en un tenant equivocado (el mismo tipo de confusión que
+   documentamos en la tabla de troubleshooting). Si no tienes Azure CLI,
+   instálalo con `winget install --exact --id Microsoft.AzureCLI`.
+5. Selecciona y confirma tu suscripción desde la terminal, y pega el
+   comando que te generó el panel de Fabric App (similar a este):
+   ```bash
    npm create @microsoft/rayfin@latest -- "app-mexicolindo" --template dataapp --workspace "<tu-workspace>"
    ```
-    
-6. Te va pedir permisos para instalar archivos y dependencias npm de Rayfin (autorizalo).
-7. Una vez completo el scaffold inicial navega hasta el directorio del proyecto con los siguientes comandos:
-8. 
+6. Te va a pedir permisos para instalar archivos y dependencias npm de
+   Rayfin — autorízalo.
+7. Una vez completo el scaffold inicial, navega al directorio del proyecto
+   y levanta el servidor de desarrollo:
    ```bash
    cd app-mexicolindo
    npm run dev
    ```
-`npm run dev` te deberia proveer un URL para una vista previa de la aplicacion (servidor dev) pero actualmente los template **"DataApp"** no se pueden visualizar desde fuera de Fabric por lo que no sera posible ver esta vista previa (obtendras un mensaje de 'Can't open this app outside Fabric). Para salir del scope de este comando puedes usar Crtl + C en la misma terminal.
-
+   `npm run dev` debería darte una URL local, pero **actualmente la
+   plantilla "Data App" no se puede visualizar fuera de Fabric** — al abrir
+   esa URL verás el mensaje `Can't open this app outside Fabric`. Esto es
+   una limitación conocida de Fabric, no un error tuyo. Usa `Ctrl+C` en la
+   terminal para salir del proceso cuando quieras.
 
 > 🔀 **Ruta Alterna/Opcional — agente de código:** el mismo panel del App en Fabric tiene un botón
 > **"Copy prompt"** ("Using an AI coding agent? Skip the steps below") que
-> entrega un prompt equivalente a los pasos 1–4 de arriba, pensado para un
-> agente con permiso de ejecutar comandos de terminal (ej. Copilot en modo
-> agente en VS Code, no solo chat). Si lo usas, ten presente que le das a un
-> agente permiso de correr comandos por su cuenta — vale la pena revisar
-> cada uno antes de aprobarlo, como con cualquier agente de código.
+> entrega un prompt equivalente a los pasos 5–7 de arriba (scaffold, cd al
+> proyecto, `npm run dev`) — pensado para un agente con permiso de ejecutar
+> comandos de terminal (ej. Copilot en modo agente en VS Code, no solo
+> chat). El paso 4 (`az login`) sigue siendo necesario antes, sin importar
+> qué ruta uses. Si usas esta ruta, ten presente que le das a un agente
+> permiso de correr comandos por su cuenta — vale la pena revisar cada uno
+> antes de aprobarlo, como con cualquier agente de código.
 
 ### Bloque 6 — Prompt a Copilot para conectar el modelo semántico (1:20–1:45)
 
-1. Abre otra ventana de VS Code desde la carpeta del proyecto y abre el panel de **GitHub
-   Copilot Chat**  CRTL + Shift + I (o ejecuta `copilot` en una terminal para usar Copilot CLI).
-2. Asegurate de estar en modo **Agente** y utilizar un LLM de tipo Sonnet 4.6 o GPT-5
+1. Abre otra ventana de VS Code desde la carpeta del proyecto y abre el
+   panel de **GitHub Copilot Chat** (`Ctrl+Shift+I`, o ejecuta `copilot` en
+   una terminal para usar Copilot CLI).
+2. Asegúrate de estar en modo **Agente** y usar un modelo tipo Sonnet 4.6 o
+   GPT-5.
 3. Usa el prompt de abajo. Sigue el patrón recomendado por Microsoft Learn:
-   **una sola instrucción que combina el link del modelo con lo que quieres
+   **una sola instrucción que combina el modelo con lo que quieres
    construir**.
 
 **📋 PROMPT — cópialo tal cual en Copilot:**
 
 ```text
-Conectate a mi Workspace de Fabric <nombre-del-workspace> y usa mi modelo semántico <nombre-del-modelo semantico>para generar un dashboard
-de ventas de México Lindo con: una tarjeta KPI de ventastotales, una gráfica de barras de ventas por sucursal, una gráfica de
-línea de ventas por mes, y una tabla con el detalle de platillos másvendidos (nombre, categoría, cantidad vendida, monto total).
+Conéctate a mi workspace de Fabric <nombre-del-workspace> y usa mi modelo
+semántico <nombre-del-modelo-semantico> para generar un dashboard de ventas
+de México Lindo con: una tarjeta KPI de ventas totales, una gráfica de
+barras de ventas por sucursal, una gráfica de línea de ventas por mes, y
+una tabla con el detalle de platillos más vendidos (nombre, categoría,
+cantidad vendida, monto total).
 ```
 
-Sustituye `<nombre-del-modelo semantico>` por el nombre del modelo que copiaste en el
-Bloque 4
+Sustituye `<nombre-del-workspace>` y `<nombre-del-modelo-semantico>` por los
+nombres reales de tu workspace y el modelo que copiaste en el Bloque 4.
 
-3. Copilot te va pedir autenticar para validar tu acceso con Github, luego generará la conexión al modelo (maneja la autenticación por ti,
+4. Copilot te va a pedir autenticarte con GitHub para validar tu acceso, y
+   luego generará la conexión al modelo (maneja la autenticación por ti,
    según la documentación oficial) y los componentes visuales.
-4. Dejalo terminar, revisa los pasos que ejecuta y aprueba (allow) las solicitudes que te haga para poder realizar cambios en el app. Copilot va construir un plan de ejecucion para completar los todos los pasos, esto puede tomar unos minutos.
-5. Una vez completo es hora de revisar lo que construimos con Github Copilot, para ello primero subamos los cambios a Fabric. Desde la terminal en el folder del proyecto ejecuta `npx rayfin up` (este comando publica los cambios del app local en Fabric) y espera a que termine.
-6. Abre nuevamente Fabric y desde la venta del App refresca el navegador, veras el app que genero Copilot, desde aca podemos validar los cambios e ir de nuevo a VS Code e iterar el desarrollo pidiendole modificaciones o ajustes.
-7. Prueba ahora y pidele **un solo ajuste pequeño** para mostrar que se puede iterar:
+5. Déjalo terminar, revisa los pasos que ejecuta, y aprueba (*allow*) las
+   solicitudes que te haga para poder realizar cambios en la app. Copilot
+   construye un plan de ejecución para completar todos los pasos — puede
+   tomar unos minutos.
+6. Una vez completo, subamos los cambios a Fabric para revisarlos: desde la
+   terminal en la carpeta del proyecto, ejecuta `npx rayfin up` (publica los
+   cambios locales en Fabric) y espera a que termine.
+7. Abre nuevamente el ítem App en Fabric y refresca el navegador — verás la
+   app que generó Copilot. Desde ahí puedes validar los cambios, y volver a
+   VS Code a iterar pidiendo modificaciones o ajustes.
+8. Pide **un solo ajuste pequeño** para mostrar que se puede iterar:
 
 **📋 PROMPT — cópialo tal cual en Copilot:**
 
 ```text
 Agrega un filtro (slicer) por sucursal que afecte a todos los visuales.
 ```
-Una vez termine Github Copilot de ejecutar los cambios, vuelve a subir los cambios con `npx rayfin up`y procede a validar desde Fabric.
+
+Cuando Copilot termine de ejecutar el cambio, vuelve a subirlo con
+`npx rayfin up` y valida de nuevo desde Fabric.
 
 > ⚠️ **Limitación conocida (documentada por Microsoft):** una Fabric App
 > conectada a un modelo semántico no se puede abrir en su propia ventana de
@@ -292,15 +322,19 @@ Aplica un estilo de marca "México Lindo": paleta de verde, blanco y rojo,
 tipografía moderna sans-serif, esquinas redondeadas en las tarjetas.
 ```
 
-Vuelve nuevamente a subir los cambios con `npx rayfin up`y procede a validar desde Fabric.
+Vuelve a subir los cambios con `npx rayfin up` y valida desde Fabric.
 
 ### Bloque 8 — Entendiendo los comandos de despliegue y validación (1:55–2:00)
 
 Estos comandos con importantes porque permiten iterar el desarrollo local y los cambios que se publican en Fabric.
 
-- `npm run dev` (Bloque 5) solo levanta una **vista previa local**, en tu
-  propia máquina — nadie más la puede ver, ni siquiera dentro de Fabric (no soportado aun para el template DataApp)
-  Sirve únicamente para que tú y Copilot iteren rápido mientras desarrollan.
+- `npm run dev` (Bloque 5) levanta el servidor de desarrollo local que
+  Copilot usa para trabajar en el proyecto — **no muestra ninguna vista
+  previa visual**. Es una limitación actual de Fabric para la plantilla
+  `dataapp`: al abrir la URL local verás "Can't open this app outside
+  Fabric". Sirve para que Copilot pueda iterar sobre el código, pero el
+  único lugar donde vas a **ver** el resultado real es dentro del portal
+  de Fabric, después de desplegar.
 - `npx rayfin up` es el que **publica la app de verdad** dentro de tu
   workspace de Fabric — solo hasta que corres esto, el ítem **App** en el
   portal de Fabric muestra el dashboard real.
@@ -339,10 +373,9 @@ Estos comandos con importantes porque permiten iterar el desarrollo local y los 
 | `npx rayfin up` falla con error de sesión | Sesión de Rayfin CLI expirada | `npx rayfin login` y reintentar |
 
 
-> ℹ️ **Nota de procedencia:** las dos filas de auth (tokens de otro tenant /
-> Bad Request) vienen de fricciones reales observadas durante la
-> preparación de este laboratorio, no de la documentación oficial —
-> repórtalas si las ves, pueden cambiar antes de GA.
+> ℹ️ **Nota de procedencia:** la fila de "Bad Request" viene de una fricción
+> real observada durante la preparación de este laboratorio, no de la
+> documentación oficial — repórtala si la ves, puede cambiar antes de GA.
 
 </details>
 
@@ -357,16 +390,16 @@ ellas. Incluye una **regla anti-cola** (el agente no puede usar el ground
 truth como atajo) y una evaluación de exactitud contra ese ground truth.
 
 **Resultado:** el agente alcanzó **96,7% de exactitud (29/30)** clasificando
-las transcripciones en Positivo / Neutral / Negativo. El próximo paso natural
-es escribir el sentimiento de vuelta a OneLake y visualizarlo en un dashboard
-Power BI / Fabric, cerrando el ciclo con la Parte 1.
+las transcripciones en Positivo / Neutral / Negativo. Como **tarea sugerida
+(Parte 3, no incluida aquí)**: escribir el sentimiento de vuelta a OneLake y
+visualizarlo en un dashboard Power BI / Fabric, cerrando el ciclo con la
+Parte 1 — queda como ejercicio propuesto para que el participante lo
+construya por su cuenta.
 
 Ver el flujo completo — crear el agente, conectar el KB, el prompt de
 sentiment analysis, la evaluación y las **dos asignaciones de rol RBAC** que
 no se crean solas — en
 [`docs/PARTE2-FOUNDRY-IQ.md`](./docs/PARTE2-FOUNDRY-IQ.md).
-
-> Parte 2 completada por **Gabriela Drumond** (17 de julio de 2026).
 
 ---
 
@@ -399,8 +432,6 @@ mexico-lindo-rayfin-lab/
 ├── assets/
 │   ├── flujo-ejercicio.svg      ← diagrama del flujo (Parte 1), referenciado en el README
 │   └── flujo-parte2.svg         ← diagrama del flujo (Parte 2), referenciado en PARTE2-FOUNDRY-IQ.md
-├── scripts/
-│   └── generar_transcripciones.py  ← script que generó las transcripciones sintéticas
 └── data/
     ├── categorias.csv
     ├── sucursales.csv

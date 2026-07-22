@@ -63,10 +63,10 @@ alumno llegue a ellos, adviértele ANTES de que se atasque:
 
 ### 1. Indexer indexa 0/30 (Parte 2, Paso de indexación)
 
-- **Causa:** falta el rol **Cognitive Services User** para la *managed identity
+- **Causa:** falta el rol **Cognitive Services OpenAI User** para la *managed identity
   del Azure AI Search* sobre el recurso de AI.
 - **Solución:** IAM del recurso de AI → Add role assignment → Cognitive
-  Services User → Managed identity → la identidad del Search. Espera
+  Services OpenAI User → Managed identity → la identidad del Search. Espera
   **2-3 min de propagación** y re-ejecuta el indexer.
 - **Si ves 0/0 (change tracking):** haz **Reset + Run** en el indexer — no es
   un error, es caché. Debe llegar a **30/30**.
@@ -81,7 +81,8 @@ alumno llegue a ellos, adviértele ANTES de que se atasque:
 - **Requisito:** el Search debe estar en **API access control = Role-based**
   (o Both).
 
-> Detalle completo en `docs/PARTE2-FOUNDRY-IQ.md` → sección "Dos roles de fricción".
+> Ambos se documentan como advertencias inline en `docs/PARTE2-FOUNDRY-IQ.md`,
+> justo en el paso donde ocurren.
 
 ---
 
@@ -99,5 +100,7 @@ la respuesta por la posición en vez de leer el texto real.
 ## Al terminar
 
 Cuando el alumno complete la Parte 2, felicítalo, resume qué construyó (agente de
-sentiment analysis con grounding sobre Foundry IQ) y menciona el siguiente paso
-natural: llevar los resultados a un **dashboard en Power BI / Fabric**.
+sentiment analysis con grounding sobre Foundry IQ) y menciona la **tarea
+sugerida (Parte 3, no cubierta en este lab)**: llevar los resultados a un
+**dashboard en Power BI / Fabric** por su cuenta, usando lo aprendido en la
+Parte 1.
