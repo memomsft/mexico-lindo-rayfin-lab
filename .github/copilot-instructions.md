@@ -47,10 +47,11 @@ Lee y sigue los documentos del repo en este orden:
 
 1. **`docs/PRERREQUISITOS.md`** — verifica que TODO el checklist esté completo
    antes de empezar. Si falta algo (especialmente los tenant settings de Fabric
-   o los modelos desplegados en Foundry), detente y resuélvelo primero.
-2. **`README.md`** — visión general y Parte 1 (Fabric App con RayFin).
-3. **`docs/PARTE2-FOUNDRY-IQ.md`** — Parte 2 (Foundry IQ + Foundry Agent para
-   sentiment analysis). Sigue los Pasos 1 → 9 en orden.
+   o los recursos/permisos de Foundry), detente y resuélvelo primero.
+2. **`README.md`** — la guía completa del lab en un solo documento:
+   **Parte A** (Fabric App con Rayfin, Bloques 1–4) y **Parte B** (Foundry IQ +
+   Foundry Agent para análisis de sentimiento, Bloques 5–6). Sigue los bloques
+   en orden.
 
 Presenta el mapa al alumno al inicio y pregúntale desde qué parte quiere empezar.
 
@@ -58,31 +59,66 @@ Presenta el mapa al alumno al inicio y pregúntale desde qué parte quiere empez
 
 ## ⚠️ Puntos de fricción — alerta proactivamente
 
-Estos dos puntos rompen el laboratorio y **no se resuelven solos**. Cuando el
-alumno llegue a ellos, adviértele ANTES de que se atasque:
+Estos puntos rompen el laboratorio y **no se resuelven solos**. Valídalos en
+el preflight de cada parte: los de la Parte B **antes** de crear el Knowledge
+Base, y los de la Parte A **antes** de crear la Fabric App. No esperes al primer
+error del indexador, del agente o del despliegue.
 
-### 1. Indexer indexa 0/30 (Parte 2, Paso de indexación)
+### 1. Indexer indexa 0/30 (Parte B, Bloque 5)
 
-- **Causa:** falta el rol **Cognitive Services OpenAI User** para la *managed identity
-  del Azure AI Search* sobre el recurso de AI.
+- **Causa:** falta el rol **Cognitive Services OpenAI User** para la *managed
+   identity del Azure AI Search/Foundry IQ resource* sobre el recurso de AI.
 - **Solución:** IAM del recurso de AI → Add role assignment → Cognitive
   Services OpenAI User → Managed identity → la identidad del Search. Espera
   **2-3 min de propagación** y re-ejecuta el indexer.
 - **Si ves 0/0 (change tracking):** haz **Reset + Run** en el indexer — no es
   un error, es caché. Debe llegar a **30/30**.
 
-### 2. El agente da 403 al conectar el Knowledge Base (Parte 2, Paso del agente)
+### 2. El agente da 403 al conectar el Knowledge Base (Parte B, Bloque 6)
 
 - **Causa:** falta el rol **Search Index Data Reader** para la *managed
   identity del proyecto de Foundry* sobre el Azure AI Search.
 - **Solución:** IAM del Search → Add role assignment → Search Index Data
   Reader → Managed identity → la identidad del proyecto de Foundry. Espera
   **2-3 min** y reintenta.
-- **Requisito:** el Search debe estar en **API access control = Role-based**
-  (o Both).
+- **Nota de portal:** la versión actual de Foundry IQ puede no mostrar una
+   opción editable llamada *API access control*. No bloquees al alumno
+   buscándola; valida la identidad y las dos asignaciones RBAC documentadas.
 
-> Ambos se documentan como advertencias inline en `docs/PARTE2-FOUNDRY-IQ.md`,
-> justo en el paso donde ocurren.
+### 3. Preflight de acceso antes de crear el KB
+
+- Confirma como precondición que el cliente ya trae el **proyecto de Foundry
+   creado** y los accesos de Azure listos.
+- Confirma que la **región del Foundry IQ resource** tiene capacidad de Azure AI
+   Search y que **ambos modelos** (`text-embedding-3-small` para el indexer y
+   `gpt-5` u otro capaz para el agente) están desplegados en esa región.
+- Activa y guarda **System assigned** en el Foundry IQ resource / Search.
+- Permisos mínimos que deben existir y estar propagados antes de empezar:
+   - Ejecutante del lab: **Contributor** (u Owner) en el proyecto de Foundry.
+   - Ejecutante del lab: **Workspace Admin** en el workspace Fabric del lab.
+   - Managed identity del Search (system-assigned): **Contributor** en el
+      workspace Fabric del Lakehouse.
+   - Managed identity del Search: **Cognitive Services OpenAI User** en el
+      recurso de AI con los modelos.
+   - Managed identity del **proyecto Foundry**: **Search Index Data Reader** en
+      el Search (elige el principal de tipo *Foundry project*, no el recurso
+      padre Foundry).
+- Espera **2-5 min** de propagación tras cada asignación y solo entonces crea la
+   fuente OneLake.
+
+### 4. Bloqueos de Parte A que deben validarse antes de empezar
+
+- Confirma que el workspace fue creado directamente en una región/capacidad
+   compatible con Fabric Apps; no puede migrarse entre regiones si contiene
+   ítems.
+- Confirma que el workload **Fabric Apps (preview)** está habilitado en el
+   tenant antes de buscar **Data App**.
+- Antes del scaffold, confirma acceso npm en la red corporativa.
+- Antes de `rayfin up`, confirma el tenant con `npx rayfin login status`, el
+   workspace mediante su ID y que la capacidad está Active.
+
+> Ambos se documentan como advertencias inline en `README.md`, justo en el
+> paso donde ocurren.
 
 ---
 
@@ -99,8 +135,9 @@ la respuesta por la posición en vez de leer el texto real.
 
 ## Al terminar
 
-Cuando el alumno complete la Parte 2, felicítalo, resume qué construyó (agente de
-sentiment analysis con grounding sobre Foundry IQ) y menciona la **tarea
-sugerida (Parte 3, no cubierta en este lab)**: llevar los resultados a un
-**dashboard en Power BI / Fabric** por su cuenta, usando lo aprendido en la
-Parte 1.
+Cuando el alumno complete la Parte B, felicítalo y resume qué construyó de punta
+a punta: en la **Parte A** un dashboard de ventas en Fabric App conectado al
+modelo semántico vía Copilot, y en la **Parte B** un agente de análisis de
+sentimiento con grounding sobre Foundry IQ. Cierra con la idea que amarra el
+lab: **dev-time** (Copilot acelera a quien construye) + **run-time** (Fabric App
+y el Foundry Agent ejecutan la inteligencia) — Microsoft cubre el ciclo completo.

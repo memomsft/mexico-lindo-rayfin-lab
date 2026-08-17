@@ -1,6 +1,6 @@
 <svg width="100%" viewBox="0 0 680 560" xmlns="http://www.w3.org/2000/svg" role="img" font-family="Segoe UI, Arial, sans-serif">
-<title>Flujo de la Parte 2 — Foundry IQ + Foundry Agent (México Lindo)</title>
-<desc>30 transcripciones JSON se cargan al mismo Lakehouse en Fabric, se exponen como Knowledge Base en Foundry IQ (OneLake indexado con embeddings), un Foundry Agent con gpt-5 hace sentiment analysis con regla anti-cola, y los resultados se evalúan (96,7% de exactitud) para alimentar un dashboard en Power BI / Fabric.</desc>
+<title>Flujo de la Parte B — Foundry IQ + Foundry Agent (México Lindo)</title>
+<desc>30 transcripciones JSON se cargan al mismo Lakehouse en Fabric, se exponen como Knowledge Base en Foundry IQ (OneLake indexado con embeddings), y un Foundry Agent con gpt-5 clasifica el sentimiento de cada llamada con grounding y regla anti-cola, evaluado contra el ground truth.</desc>
 <defs>
 <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
 <path d="M2 1L8 5L2 9" fill="none" stroke="#888780" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>

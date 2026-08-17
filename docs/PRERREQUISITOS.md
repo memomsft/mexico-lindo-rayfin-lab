@@ -99,7 +99,15 @@ explica qué se hace y por qué, y solo avanza cuando tú confirmas. Para usarlo
       signed in") y el panel de **Copilot Chat** permite seleccionar el modo
       **Agent**.
 
-## 6. Solo si vas a hacer la Parte 2 (Foundry IQ) — ver `PARTE2-FOUNDRY-IQ.md`
+## 6. Accesos de Azure / Foundry (Parte B) — los deja listos tu equipo de Azure/TI
+
+> **Antes de empezar el lab**, confirma que tu equipo de Azure/TI ya dejó
+> creado el **proyecto de Foundry** y aplicó los **permisos de la matriz de
+> abajo**. Normalmente esto lo hace **quien administra Azure**, no quien
+> ejecuta el lab — por eso va como prerrequisito. Si estos recursos y roles no
+> están listos y propagados de antemano, la Parte B se bloquea el día del
+> evento (crear recursos y asignar RBAC toma tiempo y suele requerir permisos
+> que el participante no tiene).
 
 - [ ] Proyecto de **Microsoft Foundry** creado (toggle "New Foundry" activado).
 - [ ] **Foundry IQ resource** creado con anticipación (Knowledge → Knowledge
@@ -114,7 +122,7 @@ explica qué se hace y por qué, y solo avanza cuando tú confirmas. Para usarlo
         agentic retrieval funcione, y suficiente para este ejercicio.
 - [ ] Rol **Workspace Admin** en el workspace de Fabric (`mexico-lindo-ws`)
       — necesario para poder agregar el Foundry IQ resource a "Manage
-      access". Contributor (el mínimo de la Parte 1) no alcanza. Distinto
+      access". Contributor (el mínimo de la Parte A) no alcanza. Distinto
       del **Tenant Admin (Fabric Admin)** que configuró los tenant settings
       al inicio de este documento — ese es a nivel de todo el tenant, este
       es acotado a este workspace.
@@ -127,16 +135,38 @@ explica qué se hace y por qué, y solo avanza cuando tú confirmas. Para usarlo
       se beneficia de mejor razonamiento). Es el modelo que razona sobre
       cada transcripción al clasificar el sentimiento; se selecciona al
       crear el Foundry Agent. Distinto del embedding model.
-- [ ] Dos **asignaciones de rol RBAC** que NO se crean solas (se resuelven en
-      el momento donde aparecen dentro del paso a paso de
-      `PARTE2-FOUNDRY-IQ.md`):
-      - **Cognitive Services OpenAI User** para la managed identity del
-        **Search** sobre el recurso de AI — sin esto el indexer indexa 0/30.
-      - **Search Index Data Reader** para la managed identity del **Foundry
-        project** sobre el Search — sin esto el agente da `403` al conectar
-        el KB.
-      - El Azure AI Search debe estar en **API access control = Role-based**
-        (o Both) para que estas identidades funcionen.
+- [ ] La identidad **System assigned** del Foundry IQ resource/Search está
+      habilitada y guardada antes de crear la fuente OneLake. Espera a que se
+      propague en Microsoft Entra ID antes de buscarla en otros portales.
+- [ ] La identidad del **Foundry IQ resource/Search** tiene rol
+      **Contributor** en el workspace de Fabric. Es la identidad del recurso
+      de tipo *Search service (Foundry IQ)*, no la del recurso padre Foundry
+      ni la del Foundry project.
+- [ ] La identidad del **Foundry IQ resource/Search** tiene rol
+      **Cognitive Services OpenAI User** sobre el recurso de AI/Foundry donde
+      está desplegado `text-embedding-3-small`. Sin este rol el indexer
+      encuentra 30 archivos pero termina en `0/30` con `PermissionDenied`.
+- [ ] La identidad del **Foundry project** tiene rol **Search Index Data
+      Reader** sobre el Foundry IQ resource/Search. En el selector de Azure,
+      elige el principal de tipo *Foundry project* con una ruta similar a
+      `<recurso-foundry>/projects/<proyecto>`, no el recurso padre Foundry.
+      Sin este rol el agente devuelve `HTTP 403` al enumerar herramientas del
+      Knowledge Base.
+
+### Matriz mínima de permisos (Foundry)
+
+| Quien (principal) | Donde (scope) | Rol requerido | Para que |
+|---|---|---|---|
+| Persona que ejecuta el laboratorio | Proyecto de Azure AI Foundry | **Contributor** (o Owner) | Crear/configurar el agente y conectar Knowledge. |
+| Persona que ejecuta el laboratorio | Workspace de Fabric del laboratorio | **Workspace Admin** | Agregar identidades en Manage access y validar integracion OneLake. |
+| Managed identity del Foundry IQ resource/Search (System assigned) | Workspace de Fabric (lakehouse del lab) | **Contributor** | Permitir lectura del contenido de OneLake/Lakehouse durante indexacion. |
+| Managed identity del Foundry IQ resource/Search (System assigned) | Recurso de AI/Foundry donde vive el deployment de embeddings | **Cognitive Services OpenAI User** | Permitir embeddings; sin este rol el indexer suele fallar con `0/30` o `30/0` (`Unauthorized`/`PermissionDenied`). |
+| Managed identity del Foundry project | Foundry IQ resource/Search | **Search Index Data Reader** | Permitir que el agente consulte el indice/KB; sin este rol aparece `HTTP 403` al enumerar tools. |
+
+> **Verificación previa de roles:** espera 2-5 minutos después de cada
+> asignación RBAC. En recursos Foundry IQ actuales, el portal puede no mostrar
+> una opción independiente llamada *API access control*. No detengas el
+> laboratorio buscándola: valida primero las cuatro condiciones anteriores.
 
 ---
 
